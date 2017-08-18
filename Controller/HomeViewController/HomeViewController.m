@@ -9,8 +9,9 @@
 #import "HomeViewController.h"
 #import "Tool.h"
 
-@interface HomeViewController ()
-
+@interface HomeViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,strong) UISearchBar *topSearch ;
+@property (nonatomic,strong) UITableView *baseTableView;
 @end
 
 @implementation HomeViewController
@@ -26,15 +27,36 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)setup{
-    [self initSearchBar];
+    [self initBaseUI];
 }
 
 
+-(void)initBaseUI{
+    self.view.backgroundColor = [UIColor grayColor];
+    [self initSearchBar];
+    [self initbaseTableView];
+}
+
+-(void)initbaseTableView{
+    self.baseTableView = [[UITableView alloc]init];
+    self.baseTableView.backgroundColor = [UIColor whiteColor];
+    self.baseTableView.delegate = self;
+    [self.view addSubview:self.baseTableView];
+    [self.baseTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.view);
+        make.top.mas_equalTo(self.topSearch.mas_bottom).offset(5);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+}
+
 -(void)initSearchBar{
-    UISearchBar *topSearch = [[UISearchBar alloc]init];
-    [self.view addSubview:topSearch];
-    [topSearch mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(30);
+    self.topSearch = [[UISearchBar alloc]init];
+    UIImage *img = [Tool GetImageWithColor:[UIColor clearColor] andHeight:32.0f];
+    [self.topSearch setBackgroundImage:img];
+    self.topSearch.delegate = self;
+    [self.view addSubview:self.topSearch];
+    [self.topSearch mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(15);
         make.left.and.right.equalTo(self.view);
     }];
 }
@@ -47,5 +69,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - UITableViewDelegate&&UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
 
+// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [[UITableViewCell alloc]init];
+    cell.textLabel.text = @"123213";
+    return cell;
+}
 @end
