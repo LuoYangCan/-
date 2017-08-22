@@ -16,6 +16,7 @@
 		683D4DE81F45A982000FEFA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683D4DE61F45A982000FEFA7 /* LaunchScreen.storyboard */; };
 		68B7A6011F47328200264318 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6001F47328200264318 /* HomeViewController.m */; };
 		68B7A6051F47373D00264318 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6041F47373D00264318 /* Tool.m */; };
+		68D57E851F4835B40085ED38 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D57E841F4835B40085ED38 /* HomeTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		68B7A6001F47328200264318 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		68B7A6031F47373D00264318 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		68B7A6041F47373D00264318 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
+		68D57E831F4835B40085ED38 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		68D57E841F4835B40085ED38 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		B32AE629E4D5F56D01E14F89 /* Pods-InternationalEtiquette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InternationalEtiquette.release.xcconfig"; path = "Pods/Target Support Files/Pods-InternationalEtiquette/Pods-InternationalEtiquette.release.xcconfig"; sourceTree = "<group>"; };
 		B841C683E0989CE9A55BF798 /* libPods-InternationalEtiquette.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InternationalEtiquette.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -122,6 +125,7 @@
 		68B7A5FD1F47324200264318 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				68D57E821F4835A20085ED38 /* HomeTableViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +146,15 @@
 				68B7A6041F47373D00264318 /* Tool.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		68D57E821F4835A20085ED38 /* HomeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				68D57E831F4835B40085ED38 /* HomeTableViewCell.h */,
+				68D57E841F4835B40085ED38 /* HomeTableViewCell.m */,
+			);
+			path = HomeTableViewCell;
 			sourceTree = "<group>";
 		};
 		8FFC11119D2239F197D2C2D3 /* Pods */ = {
@@ -278,6 +291,7 @@
 			files = (
 				68B7A6051F47373D00264318 /* Tool.m in Sources */,
 				683D4DE01F45A982000FEFA7 /* ViewController.m in Sources */,
+				68D57E851F4835B40085ED38 /* HomeTableViewCell.m in Sources */,
 				683D4DDD1F45A982000FEFA7 /* AppDelegate.m in Sources */,
 				683D4DDA1F45A982000FEFA7 /* main.m in Sources */,
 				68B7A6011F47328200264318 /* HomeViewController.m in Sources */,
