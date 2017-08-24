@@ -1,0 +1,101 @@
+//
+//  SearchView.m
+//  InternationalEtiquette
+//
+//  Created by 孤岛 on 2017/8/24.
+//  Copyright © 2017年 孤岛. All rights reserved.
+//
+
+#import "SearchView.h"
+#import <Masonry.h>
+#import "Tool.h"
+
+@interface SearchView ()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic,strong) UITableView *SearchTable;        /**< 搜索列表  */
+@property (nonatomic,strong) UISearchBar *SearchBar;        /**< 搜索框    */
+
+@end
+
+@implementation SearchView
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setup];
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+-(void)setup{
+    self.view.backgroundColor = [UIColor grayColor];
+    [self initTableView];
+    [self initSearchBar];
+}
+-(void)initTableView{
+    _SearchTable = [[UITableView alloc]init];
+    _SearchTable.delegate = self;
+    _SearchTable.dataSource = self;
+    [self.view addSubview:_SearchTable];
+    [_SearchTable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset(60);
+        make.left.and.right.and.bottom.equalTo(self.view);
+    }];
+}
+-(void)initSearchBar{
+    _SearchBar = [[UISearchBar alloc]init];
+    _SearchBar.delegate = self;
+    [self.view addSubview:_SearchBar];
+    [_SearchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).mas_offset(10);
+        make.top.equalTo(self.view).mas_offset(17);
+        make.right.equalTo(self.view).mas_offset(-65);
+        make.bottom.equalTo(_SearchTable.mas_top).mas_offset(-5);
+    }];
+    [Tool getClearSearchBar:_SearchBar];
+    _SearchBar.placeholder = @"请输入搜索内容\t\t\t\t\t\t";
+    
+    UIButton *searchLabl = [[UIButton alloc]init];
+    [searchLabl setTitle:@"取消" forState:UIControlStateNormal];
+    [searchLabl addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:searchLabl];
+    [searchLabl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_SearchBar.mas_right).mas_offset(8);
+//        make.right.equalTo(self.view);
+        make.top.equalTo(_SearchBar.mas_top);
+        make.height.equalTo(_SearchBar.mas_height);
+    }];
+    
+}
+
+-(void)back{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+#pragma mark - UITableViewDelegate&&UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 15;
+}
+
+// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell"];
+    if (!cell) {
+       cell = [[UITableViewCell alloc]init];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+@end

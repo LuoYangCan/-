@@ -19,8 +19,27 @@
 /**
  将搜索栏透明
  */
-+ (UIImage*) GetImageWithColor:(UIColor*)color andHeight:(CGFloat)height;
+//+ (UIImage*) GetImageWithColor:(UIColor*)color andHeight:(CGFloat)height;
++(void)getClearSearchBar:(UISearchBar *)searchBar;
 
 
+
+
+
+
+/**
+ 切圆角工具
+ */
++(UIView *)getCycleView:(UIView *)View WithRect:(CGRect)rect;
+
+
+
+
+
+
+/**
+   hexColor获取
+ */
++ (UIColor *)getColor:(NSString *)hexColor;
 
 @end

@@ -39,6 +39,11 @@
 }
 
 
+
+
+
+
+
 + (UIImage*) GetImageWithColor:(UIColor*)color andHeight:(CGFloat)height{
     CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, height);
     UIGraphicsBeginImageContext(r.size);
@@ -48,6 +53,35 @@
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return img;
+}
+
+
+
++(void)getClearSearchBar:(UISearchBar *)searchBar{
+    CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, 32.0f);
+    UIGraphicsBeginImageContext(r.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [[UIColor clearColor]CGColor]);
+    CGContextFillRect(context, r);
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [searchBar setBackgroundImage:img];
+}
+
+
+
+
+
++(UIView *)getCycleView:(UIView *)View WithRect:(CGRect)rect{
+    if (!View||View == nil) {
+        View = [[UIView alloc]initWithFrame:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)];
+    }
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:View.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:View.bounds.size];
+    CAShapeLayer *masklayer = [[CAShapeLayer alloc]init];
+    masklayer.frame = View.bounds;
+    masklayer.path = maskPath.CGPath;
+    View.layer.mask = masklayer;
+    return View;
 }
 
 @end
