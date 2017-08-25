@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0AC289C96302C6B74ACA1030A91FA5AD'
-               BlueprintName = 'Pods-InternationalEtiquette'
+               BlueprintIdentifier = '904CD97C8FF649E63B1E2412EBEEF0C7'
+               BlueprintName = 'Pods-国际礼仪应对系统'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-InternationalEtiquette.a'>
+               BuildableName = 'libPods-国际礼仪应对系统.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

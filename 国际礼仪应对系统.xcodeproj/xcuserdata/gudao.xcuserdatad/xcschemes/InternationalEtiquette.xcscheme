@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "683D4DD41F45A982000FEFA7"
-               BuildableName = "InternationalEtiquette.app"
-               BlueprintName = "InternationalEtiquette"
-               ReferencedContainer = "container:InternationalEtiquette.xcodeproj">
+               BuildableName = "&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;.app"
+               BlueprintName = "&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;"
+               ReferencedContainer = "container:&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "683D4DD41F45A982000FEFA7"
-            BuildableName = "InternationalEtiquette.app"
-            BlueprintName = "InternationalEtiquette"
-            ReferencedContainer = "container:InternationalEtiquette.xcodeproj">
+            BuildableName = "&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;.app"
+            BlueprintName = "&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;"
+            ReferencedContainer = "container:&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "683D4DD41F45A982000FEFA7"
-            BuildableName = "InternationalEtiquette.app"
-            BlueprintName = "InternationalEtiquette"
-            ReferencedContainer = "container:InternationalEtiquette.xcodeproj">
+            BuildableName = "&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;.app"
+            BlueprintName = "&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;"
+            ReferencedContainer = "container:&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "683D4DD41F45A982000FEFA7"
-            BuildableName = "InternationalEtiquette.app"
-            BlueprintName = "InternationalEtiquette"
-            ReferencedContainer = "container:InternationalEtiquette.xcodeproj">
+            BuildableName = "&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;.app"
+            BlueprintName = "&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;"
+            ReferencedContainer = "container:&#x56fd;&#x9645;&#x793c;&#x4eea;&#x5e94;&#x5bf9;&#x7cfb;&#x7edf;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

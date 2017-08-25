@@ -18,11 +18,12 @@
 		68B7A6011F47328200264318 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6001F47328200264318 /* HomeViewController.m */; };
 		68B7A6051F47373D00264318 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6041F47373D00264318 /* Tool.m */; };
 		68D57E851F4835B40085ED38 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D57E841F4835B40085ED38 /* HomeTableViewCell.m */; };
+		F459E7461BA11F39374A91D6 /* libPods-国际礼仪应对系统.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B042BCBD6F95E245D5F8E17 /* libPods-国际礼仪应对系统.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		64D251919276B468138835B4 /* Pods-InternationalEtiquette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InternationalEtiquette.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InternationalEtiquette/Pods-InternationalEtiquette.debug.xcconfig"; sourceTree = "<group>"; };
-		683D4DD51F45A982000FEFA7 /* InternationalEtiquette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InternationalEtiquette.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		683D4DD51F45A982000FEFA7 /* 国际礼仪应对系统.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "国际礼仪应对系统.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		683D4DD91F45A982000FEFA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		683D4DDB1F45A982000FEFA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		683D4DDC1F45A982000FEFA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -40,8 +41,11 @@
 		68B7A6041F47373D00264318 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
 		68D57E831F4835B40085ED38 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		68D57E841F4835B40085ED38 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		9B042BCBD6F95E245D5F8E17 /* libPods-国际礼仪应对系统.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-国际礼仪应对系统.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B692F7BB92C7537C8E0BFBC /* Pods-国际礼仪应对系统.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-国际礼仪应对系统.debug.xcconfig"; path = "Pods/Target Support Files/Pods-国际礼仪应对系统/Pods-国际礼仪应对系统.debug.xcconfig"; sourceTree = "<group>"; };
 		B32AE629E4D5F56D01E14F89 /* Pods-InternationalEtiquette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InternationalEtiquette.release.xcconfig"; path = "Pods/Target Support Files/Pods-InternationalEtiquette/Pods-InternationalEtiquette.release.xcconfig"; sourceTree = "<group>"; };
 		B841C683E0989CE9A55BF798 /* libPods-InternationalEtiquette.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InternationalEtiquette.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F99EA8EE3FD0A9DF1B4F651C /* Pods-国际礼仪应对系统.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-国际礼仪应对系统.release.xcconfig"; path = "Pods/Target Support Files/Pods-国际礼仪应对系统/Pods-国际礼仪应对系统.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66E6032205F6C3F18E54270E /* libPods-InternationalEtiquette.a in Frameworks */,
+				F459E7461BA11F39374A91D6 /* libPods-国际礼仪应对系统.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				B841C683E0989CE9A55BF798 /* libPods-InternationalEtiquette.a */,
+				9B042BCBD6F95E245D5F8E17 /* libPods-国际礼仪应对系统.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -81,7 +87,7 @@
 		683D4DD61F45A982000FEFA7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				683D4DD51F45A982000FEFA7 /* InternationalEtiquette.app */,
+				683D4DD51F45A982000FEFA7 /* 国际礼仪应对系统.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,6 +181,8 @@
 			children = (
 				64D251919276B468138835B4 /* Pods-InternationalEtiquette.debug.xcconfig */,
 				B32AE629E4D5F56D01E14F89 /* Pods-InternationalEtiquette.release.xcconfig */,
+				9B692F7BB92C7537C8E0BFBC /* Pods-国际礼仪应对系统.debug.xcconfig */,
+				F99EA8EE3FD0A9DF1B4F651C /* Pods-国际礼仪应对系统.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -182,9 +190,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		683D4DD41F45A982000FEFA7 /* InternationalEtiquette */ = {
+		683D4DD41F45A982000FEFA7 /* 国际礼仪应对系统 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 683D4DEC1F45A982000FEFA7 /* Build configuration list for PBXNativeTarget "InternationalEtiquette" */;
+			buildConfigurationList = 683D4DEC1F45A982000FEFA7 /* Build configuration list for PBXNativeTarget "国际礼仪应对系统" */;
 			buildPhases = (
 				6141225815ED29CD91FA40BD /* [CP] Check Pods Manifest.lock */,
 				683D4DD11F45A982000FEFA7 /* Sources */,
@@ -197,9 +205,9 @@
 			);
 			dependencies = (
 			);
-			name = InternationalEtiquette;
+			name = "国际礼仪应对系统";
 			productName = InternationalEtiquette;
-			productReference = 683D4DD51F45A982000FEFA7 /* InternationalEtiquette.app */;
+			productReference = 683D4DD51F45A982000FEFA7 /* 国际礼仪应对系统.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -218,7 +226,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 683D4DD01F45A982000FEFA7 /* Build configuration list for PBXProject "InternationalEtiquette" */;
+			buildConfigurationList = 683D4DD01F45A982000FEFA7 /* Build configuration list for PBXProject "国际礼仪应对系统" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -231,7 +239,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				683D4DD41F45A982000FEFA7 /* InternationalEtiquette */,
+				683D4DD41F45A982000FEFA7 /* 国际礼仪应对系统 */,
 			);
 		};
 /* End PBXProject section */
@@ -262,7 +270,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InternationalEtiquette/Pods-InternationalEtiquette-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-国际礼仪应对系统/Pods-国际礼仪应对系统-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6141225815ED29CD91FA40BD /* [CP] Check Pods Manifest.lock */ = {
@@ -292,7 +300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InternationalEtiquette/Pods-InternationalEtiquette-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-国际礼仪应对系统/Pods-国际礼仪应对系统-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -426,7 +434,7 @@
 		};
 		683D4DED1F45A982000FEFA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64D251919276B468138835B4 /* Pods-InternationalEtiquette.debug.xcconfig */;
+			baseConfigurationReference = 9B692F7BB92C7537C8E0BFBC /* Pods-国际礼仪应对系统.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DQ9GH826P4;
@@ -439,7 +447,7 @@
 		};
 		683D4DEE1F45A982000FEFA7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B32AE629E4D5F56D01E14F89 /* Pods-InternationalEtiquette.release.xcconfig */;
+			baseConfigurationReference = F99EA8EE3FD0A9DF1B4F651C /* Pods-国际礼仪应对系统.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DQ9GH826P4;
@@ -453,7 +461,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		683D4DD01F45A982000FEFA7 /* Build configuration list for PBXProject "InternationalEtiquette" */ = {
+		683D4DD01F45A982000FEFA7 /* Build configuration list for PBXProject "国际礼仪应对系统" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				683D4DEA1F45A982000FEFA7 /* Debug */,
@@ -462,7 +470,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		683D4DEC1F45A982000FEFA7 /* Build configuration list for PBXNativeTarget "InternationalEtiquette" */ = {
+		683D4DEC1F45A982000FEFA7 /* Build configuration list for PBXNativeTarget "国际礼仪应对系统" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				683D4DED1F45A982000FEFA7 /* Debug */,

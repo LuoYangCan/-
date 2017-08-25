@@ -19,7 +19,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-InternationalEtiquette.xcscheme</key>
+		<key>Pods-国际礼仪应对系统.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,12 +27,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0AC289C96302C6B74ACA1030A91FA5AD</key>
+		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
+		<key>904CD97C8FF649E63B1E2412EBEEF0C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
