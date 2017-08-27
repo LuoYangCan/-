@@ -42,4 +42,13 @@
  */
 + (UIColor *)getColor:(NSString *)hexColor;
 
+
+
+
+
+/**
+ 设置搜索框内部颜色
+ */
++(void)setSearchBar:(UISearchBar *)searchBar InsideBackgroundColor:(UIColor *)backgroudColor;
+
 @end

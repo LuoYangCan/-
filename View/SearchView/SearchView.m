@@ -29,7 +29,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)setup{
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self initTableView];
     [self initSearchBar];
 }
@@ -54,10 +54,12 @@
         make.bottom.equalTo(_SearchTable.mas_top).mas_offset(-5);
     }];
     [Tool getClearSearchBar:_SearchBar];
+    [Tool setSearchBar:_SearchBar InsideBackgroundColor:RGBColor(219, 219, 219, 1)];
     _SearchBar.placeholder = @"请输入搜索内容\t\t\t\t\t\t";
     
     UIButton *searchLabl = [[UIButton alloc]init];
     [searchLabl setTitle:@"取消" forState:UIControlStateNormal];
+    [searchLabl setTitleColor:RGBColor(211, 211, 211, 1) forState:UIControlStateNormal];
     [searchLabl addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:searchLabl];
     [searchLabl mas_makeConstraints:^(MASConstraintMaker *make) {

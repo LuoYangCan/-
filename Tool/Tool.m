@@ -84,4 +84,13 @@
     return View;
 }
 
+
+
++(void)setSearchBar:(UISearchBar *)searchBar InsideBackgroundColor:(UIColor *)backgroudColor{
+    UIView *searchInside = nil;
+    searchBar.barTintColor = [UIColor whiteColor];
+    searchInside = [[[searchBar.subviews firstObject]subviews]lastObject];
+    searchInside.backgroundColor = backgroudColor;
+    
+}
 @end

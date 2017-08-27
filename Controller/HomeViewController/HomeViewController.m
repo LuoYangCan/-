@@ -17,7 +17,8 @@
 @property (nonatomic,strong) UIView *TopView;        /**< 顶部View  */
 @property (nonatomic,assign) CGFloat marginTop;        /**< contentInset.top  */
 @property (nonatomic,strong) UIView *SearchView;        /**< 搜索框  */
-
+@property (nonatomic,assign) CGFloat Offset;        /**< 滑动  */
+@property (nonatomic,strong) UILabel *searchlbl;        /**< 搜索文字  */
 @end
 
 @implementation HomeViewController
@@ -38,10 +39,11 @@
 
 
 -(void)initBaseUI{
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor whiteColor];
   //  [self initSearchBar];
     [self initbaseTableView];
     [self initTopView];
+
 }
 
 //-(void)initSearchBar{
@@ -80,7 +82,7 @@
     
     
     self.TopView = [[UIView alloc]init];
-    self.TopView.backgroundColor = [UIColor grayColor];
+    self.TopView.backgroundColor =RGBColor(118, 238, 104, 1);
     [self.baseTableView addSubview:self.TopView];
     [self.TopView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.and.right.equalTo(self.view);
@@ -93,19 +95,31 @@
     
     
     self.SearchView = [[UIView alloc]init];
-    self.SearchView.backgroundColor = [UIColor orangeColor];
+    self.SearchView.backgroundColor = RGBColor(192, 255, 62, 1);
     [self.TopView addSubview:self.SearchView];
     [self.SearchView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.TopView).mas_offset(10);
-        make.top.equalTo(self.TopView).mas_offset(17);
-        make.right.equalTo(self.TopView).mas_offset(-7);
-        make.bottom.equalTo(self.TopView.mas_bottom).mas_offset(-5);
+        make.top.equalTo(self.TopView).mas_offset(18);
+        make.right.equalTo(self.TopView).mas_offset(-10);
+        make.bottom.equalTo(self.TopView.mas_bottom).mas_offset(-8);
     }];
     self.SearchView.contentMode = UIViewContentModeScaleToFill;
     self.SearchView.layer.cornerRadius = 15.0f;
     self.SearchView.layer.masksToBounds= YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(PushtoSearch)];
     [self.SearchView addGestureRecognizer:tap];
+    
+    self.searchlbl= [[UILabel alloc]init];
+    [self.searchlbl setText:@"请输入搜索内容"];
+    [self.SearchView addSubview:self.searchlbl];
+    self.searchlbl.font = [UIFont systemFontOfSize:14.8];
+    [self.searchlbl setTextColor:[UIColor grayColor]];
+    [self.searchlbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.SearchView).mas_offset(19);
+        make.top.equalTo(self.SearchView).mas_offset(9);
+    }];
+    self.searchlbl.contentMode = UIViewContentModeScaleToFill;
+    
 }
 -(void)PushtoSearch{
     SearchView *searchVC = [[SearchView alloc]init];
@@ -148,6 +162,7 @@
     }
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat newoffsetY = offsetY + self.marginTop;
+    self.Offset = newoffsetY;
     if (newoffsetY >=140) {
         newoffsetY = 140;
     }else if (newoffsetY <= 0){
@@ -158,6 +173,7 @@
             [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
                  make.bottom.equalTo(self.view.mas_top).mas_offset(200-newoffsetY);
             }];
+//            NSLog(@"%f",offsetY);
 //            if (scrollView.isScrollEnabled && (newoffsetY >20 && newoffsetY <140)) {
 //                [UIView animateWithDuration:0.7 animations:^{
 //                    [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -174,8 +190,22 @@
 
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    
-}
+    if (scrollView == self.baseTableView){
+        if ((self.Offset >20 && self.Offset <140)) {
+//            [self.TopView.superview layoutIfNeeded];
+                            [UIView animateWithDuration:0.7 animations:^{
+//                                [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                                    make.bottom.equalTo(self.view.mas_top).mas_offset(60);
+//                                }];
+                            scrollView.contentOffset= CGPointMake(0, -60);
+                                [self.TopView.superview layoutIfNeeded];
+                            }];
+                        }
+
+        
+        }
+    }
+
 
 
 
