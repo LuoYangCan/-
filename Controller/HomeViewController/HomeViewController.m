@@ -19,6 +19,7 @@
 @property (nonatomic,strong) UIView *SearchView;        /**< 搜索框  */
 @property (nonatomic,assign) CGFloat Offset;        /**< 滑动  */
 @property (nonatomic,strong) UILabel *searchlbl;        /**< 搜索文字  */
+@property (nonatomic,strong) UIRefreshControl *RefreshControl;        /**< 下拉刷新  */
 @end
 
 @implementation HomeViewController
@@ -71,6 +72,12 @@
     }];
     [self.baseTableView setContentOffset:CGPointMake(0, -200) animated:NO];
     self.baseTableView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
+    
+    
+    self.RefreshControl = [[UIRefreshControl alloc]init];
+    [self.RefreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+    self.RefreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
+    [self.baseTableView addSubview:self.RefreshControl];
 }
 
 
@@ -119,6 +126,9 @@
         make.top.equalTo(self.SearchView).mas_offset(9);
     }];
     self.searchlbl.contentMode = UIViewContentModeScaleToFill;
+
+    
+    
     
 }
 -(void)PushtoSearch{
@@ -127,7 +137,12 @@
 }
 
 
+-(void)refreshData{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.RefreshControl endRefreshing];
+    });
 
+}
 /*
 #pragma mark - Navigation
 
