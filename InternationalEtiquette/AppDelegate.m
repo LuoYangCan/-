@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "HomeViewController.h"
+#import "BaseTabController.h"
 
 @interface AppDelegate ()
 
@@ -17,9 +17,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    HomeViewController *home = [[HomeViewController alloc]init];
-    self.window.rootViewController = home;
+    BaseTabController *base = [[BaseTabController alloc]init];
+    self.window.rootViewController = base;
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -17,6 +17,8 @@
 		68B7A6011F47328200264318 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6001F47328200264318 /* HomeViewController.m */; };
 		68B7A6051F47373D00264318 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6041F47373D00264318 /* Tool.m */; };
 		68D57E851F4835B40085ED38 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D57E841F4835B40085ED38 /* HomeTableViewCell.m */; };
+		68EC0D8E1F557EF000C11467 /* BaseTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EC0D8D1F557EF000C11467 /* BaseTabController.m */; };
+		68EC0D921F55ACF500C11467 /* UserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EC0D911F55ACF500C11467 /* UserInfoController.m */; };
 		B99AE4E426A0CE94BC43E7DB /* libPods-国际礼仪应对系统.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2870E0140A8EF952AF7C3A60 /* libPods-国际礼仪应对系统.a */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +26,6 @@
 		04BEBEC9A7A94B80F82AD4B8 /* Pods-国际礼仪应对系统.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-国际礼仪应对系统.release.xcconfig"; path = "Pods/Target Support Files/Pods-国际礼仪应对系统/Pods-国际礼仪应对系统.release.xcconfig"; sourceTree = "<group>"; };
 		1B736AE9ACBF0D2575ABC6A1 /* Pods-国际礼仪应对系统.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-国际礼仪应对系统.debug.xcconfig"; path = "Pods/Target Support Files/Pods-国际礼仪应对系统/Pods-国际礼仪应对系统.debug.xcconfig"; sourceTree = "<group>"; };
 		2870E0140A8EF952AF7C3A60 /* libPods-国际礼仪应对系统.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-国际礼仪应对系统.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		683D4DD51F45A982000FEFA7 /* 国际礼仪应对系统.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "国际礼仪应对系统.app"; path = "/Users/gudao/Developer/国际礼仪应对系统/build/Debug-iphoneos/国际礼仪应对系统.app"; sourceTree = "<absolute>"; };
 		683D4DD91F45A982000FEFA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		683D4DDB1F45A982000FEFA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		683D4DDC1F45A982000FEFA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +43,11 @@
 		68B7A6041F47373D00264318 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
 		68D57E831F4835B40085ED38 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		68D57E841F4835B40085ED38 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		68EC0D871F557E1100C11467 /* 国际礼仪应对系统.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "国际礼仪应对系统.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68EC0D8C1F557EF000C11467 /* BaseTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabController.h; sourceTree = "<group>"; };
+		68EC0D8D1F557EF000C11467 /* BaseTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabController.m; sourceTree = "<group>"; };
+		68EC0D901F55ACF500C11467 /* UserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoController.h; sourceTree = "<group>"; };
+		68EC0D911F55ACF500C11467 /* UserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 				683D4DD71F45A982000FEFA7 /* InternationalEtiquette */,
 				AB4649431857811FB016119E /* Pods */,
 				B8D4126A5E11B771F8533BFF /* Frameworks */,
+				68EC0D871F557E1100C11467 /* 国际礼仪应对系统.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +112,8 @@
 		68B7A5FB1F47324200264318 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				68EC0D8F1F55ACE600C11467 /* UserInfoController */,
+				68EC0D881F557E3100C11467 /* BaseTabController */,
 				68B7A5FE1F47326E00264318 /* HomeViewController */,
 			);
 			path = Controller;
@@ -153,6 +162,24 @@
 			path = HomeTableViewCell;
 			sourceTree = "<group>";
 		};
+		68EC0D881F557E3100C11467 /* BaseTabController */ = {
+			isa = PBXGroup;
+			children = (
+				68EC0D8C1F557EF000C11467 /* BaseTabController.h */,
+				68EC0D8D1F557EF000C11467 /* BaseTabController.m */,
+			);
+			path = BaseTabController;
+			sourceTree = "<group>";
+		};
+		68EC0D8F1F55ACE600C11467 /* UserInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				68EC0D901F55ACF500C11467 /* UserInfoController.h */,
+				68EC0D911F55ACF500C11467 /* UserInfoController.m */,
+			);
+			path = UserInfoController;
+			sourceTree = "<group>";
+		};
 		AB4649431857811FB016119E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +217,7 @@
 			);
 			name = "国际礼仪应对系统";
 			productName = InternationalEtiquette;
-			productReference = 683D4DD51F45A982000FEFA7 /* 国际礼仪应对系统.app */;
+			productReference = 68EC0D871F557E1100C11467 /* 国际礼仪应对系统.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -297,6 +324,8 @@
 				683D4DE01F45A982000FEFA7 /* ViewController.m in Sources */,
 				68D57E851F4835B40085ED38 /* HomeTableViewCell.m in Sources */,
 				6841AD221F4ECE89001B63DA /* SearchView.m in Sources */,
+				68EC0D8E1F557EF000C11467 /* BaseTabController.m in Sources */,
+				68EC0D921F55ACF500C11467 /* UserInfoController.m in Sources */,
 				683D4DDD1F45A982000FEFA7 /* AppDelegate.m in Sources */,
 				683D4DDA1F45A982000FEFA7 /* main.m in Sources */,
 				68B7A6011F47328200264318 /* HomeViewController.m in Sources */,

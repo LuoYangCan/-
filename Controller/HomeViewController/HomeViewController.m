@@ -60,7 +60,7 @@
 //}
 -(void)initbaseTableView{
     self.baseTableView = [[UITableView alloc]init];
-    self.baseTableView.backgroundColor = [UIColor clearColor];
+    self.baseTableView.backgroundColor = [UIColor whiteColor];
     self.baseTableView.delegate = self;
     self.baseTableView.dataSource = self;
     self.baseTableView.scrollIndicatorInsets = UIEdgeInsetsMake(200, 0, 0, 0);
@@ -178,17 +178,20 @@
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat newoffsetY = offsetY + self.marginTop;
     self.Offset = newoffsetY;
-    if (newoffsetY >=140) {
-        newoffsetY = 140;
-    }else if (newoffsetY <= 0){
-        newoffsetY = 0;
+            NSLog(@"%f",self.Offset);
+    CGFloat scrollOffset = newoffsetY;
+    if (scrollOffset >=140) {
+        scrollOffset = 140;
+    }else if (scrollOffset <= 0){
+        scrollOffset = 0;
     }
     if (scrollView == self.baseTableView) {
-        if (newoffsetY >=0 &&newoffsetY <=140) {
+        if (scrollOffset >=0 &&scrollOffset <=140) {
             [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
-                 make.bottom.equalTo(self.view.mas_top).mas_offset(200-newoffsetY);
+                 make.bottom.equalTo(self.view.mas_top).mas_offset(200-scrollOffset);
             }];
-//            NSLog(@"%f",offsetY);
+//            NSLog(@"%f",newoffsetY);
+//            NSLog(@"%f",scrollView.contentOffset.y);
 //            if (scrollView.isScrollEnabled && (newoffsetY >20 && newoffsetY <140)) {
 //                [UIView animateWithDuration:0.7 animations:^{
 //                    [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -206,25 +209,67 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if (scrollView == self.baseTableView){
-        if ((self.Offset >20 && self.Offset <140)) {
-//            [self.TopView.superview layoutIfNeeded];
-                            [UIView animateWithDuration:0.7 animations:^{
-//                                [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
-//                                    make.bottom.equalTo(self.view.mas_top).mas_offset(60);
-//                                }];
-                            scrollView.contentOffset= CGPointMake(0, -60);
-                                [self.TopView.superview layoutIfNeeded];
-                            }];
-                        }
+        if (!decelerate) {
+            if ((self.Offset >20 && self.Offset <140)) {
+                NSLog(@"%f",self.Offset);
+                //            scrollView.scrollEnabled = NO;
+                [self.TopView.superview layoutIfNeeded];
+                [UIView animateWithDuration:0.7 animations:^{
+                    //                                [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    //                                    make.bottom.equalTo(self.view.mas_top).mas_offset(60);
+                    //                                }];
+                    scrollView.contentOffset= CGPointMake(0, -60);
+                    [self.TopView.superview layoutIfNeeded];
+                }completion:^(BOOL finished) {
+                    //                                scrollView.scrollEnabled = YES;
+                }];
+            }
+        }
 
         
+        
+        if (scrollView.contentOffset.y <= -320) {
+            [self.RefreshControl beginRefreshing];
+            self.RefreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"正在刷新"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.RefreshControl endRefreshing];
+            });
         }
     }
-
-
-
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0){
-    
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if (scrollView == self.baseTableView){
+
+        if ((self.Offset >20 && self.Offset <140)) {
+            NSLog(@"%f",self.Offset);
+            //            scrollView.scrollEnabled = NO;
+            [self.TopView.superview layoutIfNeeded];
+            [UIView animateWithDuration:0.7 animations:^{
+                //                                [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
+                //                                    make.bottom.equalTo(self.view.mas_top).mas_offset(60);
+                //                                }];
+                scrollView.contentOffset= CGPointMake(0, -60);
+                [self.TopView.superview layoutIfNeeded];
+            }completion:^(BOOL finished) {
+                //                                scrollView.scrollEnabled = YES;
+            }];
+        }
+        
+        
+        if (scrollView.contentOffset.y <= -320) {
+            [self.RefreshControl beginRefreshing];
+            self.RefreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"正在刷新"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.RefreshControl endRefreshing];
+            });
+        }
+    }
+}
+
+
+
+//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0){
+//    
+//}
 @end
