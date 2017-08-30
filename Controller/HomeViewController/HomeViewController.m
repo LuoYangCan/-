@@ -75,7 +75,7 @@
     
     
     self.RefreshControl = [[UIRefreshControl alloc]init];
-    [self.RefreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+//    [self.RefreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
     self.RefreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
     [self.baseTableView addSubview:self.RefreshControl];
 }
@@ -136,12 +136,24 @@
     [self presentViewController:searchVC animated:NO completion:nil];
 }
 
+//
+//-(void)refreshData{
+//    [self didUpdateDataWithcompletionHandler:^(BOOL isFinished) {
+//        if (isFinished) {
+//            [self.RefreshControl endRefreshing];
+//        }
+//    }];
+//    
+//
+//}
 
--(void)refreshData{
+-(void)didUpdateDataWithcompletionHandler:(void (^) (BOOL isFinished) )completionblock{
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.RefreshControl endRefreshing];
+        NSLog(@"刷新啦");
+        if (completionblock) {
+            completionblock(YES);
+        }
     });
-
 }
 /*
 #pragma mark - Navigation
@@ -178,7 +190,6 @@
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat newoffsetY = offsetY + self.marginTop;
     self.Offset = newoffsetY;
-            NSLog(@"%f",self.Offset);
     CGFloat scrollOffset = newoffsetY;
     if (scrollOffset >=140) {
         scrollOffset = 140;
@@ -211,8 +222,6 @@
     if (scrollView == self.baseTableView){
         if (!decelerate) {
             if ((self.Offset >20 && self.Offset <140)) {
-                NSLog(@"%f",self.Offset);
-                //            scrollView.scrollEnabled = NO;
                 [self.TopView.superview layoutIfNeeded];
                 [UIView animateWithDuration:0.7 animations:^{
                     //                                [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -230,10 +239,11 @@
         
         if (scrollView.contentOffset.y <= -320) {
             [self.RefreshControl beginRefreshing];
-            self.RefreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"正在刷新"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.RefreshControl endRefreshing];
-            });
+            [self didUpdateDataWithcompletionHandler:^(BOOL isFinished) {
+                if(isFinished){
+                    [self.RefreshControl endRefreshing];
+                }
+            }];
         }
     }
 }
@@ -257,13 +267,13 @@
         }
         
         
-        if (scrollView.contentOffset.y <= -320) {
-            [self.RefreshControl beginRefreshing];
-            self.RefreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"正在刷新"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.RefreshControl endRefreshing];
-            });
-        }
+//        if (scrollView.contentOffset.y <= -320) {
+//            [self.RefreshControl beginRefreshing];
+//            self.RefreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"正在刷新"];
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [self.RefreshControl endRefreshing];
+//            });
+//        }
     }
 }
 
