@@ -34,7 +34,7 @@
 -(void)setup{
 
     UIImageView *leftimage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 20, 105 ,90)];
-    leftimage.backgroundColor = [UIColor greenColor];
+    leftimage.backgroundColor = RGBColor(211, 211, 211, 1);
     
     UILabel *content = [[UILabel alloc]initWithFrame:CGRectMake(128, 45, SCREEN_WIDTH - 190, 60)];
  //   content.backgroundColor = [UIColor cyanColor];

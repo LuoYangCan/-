@@ -79,7 +79,7 @@
     
     
     self.TopView = [[UIView alloc]init];
-    self.TopView.backgroundColor =RGBColor(118, 238, 104, 1);
+    self.TopView.backgroundColor =RGBColor(235, 235, 235, 1);
     [self.baseTableView addSubview:self.TopView];
     [self.TopView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.and.right.equalTo(self.view);
@@ -92,13 +92,13 @@
     
     
     self.SearchView = [[UIView alloc]init];
-    self.SearchView.backgroundColor = RGBColor(192, 255, 62, 1);
+    self.SearchView.backgroundColor = RGBColor(190, 190, 190, 1);
     [self.TopView addSubview:self.SearchView];
     [self.SearchView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.TopView).mas_offset(10);
         make.top.equalTo(self.TopView).mas_offset(18);
         make.right.equalTo(self.TopView).mas_offset(-10);
-        make.bottom.equalTo(self.TopView.mas_bottom).mas_offset(-8);
+        make.bottom.equalTo(self.TopView.mas_bottom).mas_offset(-10);
     }];
     self.SearchView.contentMode = UIViewContentModeScaleToFill;
     self.SearchView.layer.cornerRadius = 15.0f;

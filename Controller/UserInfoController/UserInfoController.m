@@ -8,6 +8,7 @@
 
 #import "UserInfoController.h"
 #import <Masonry.h>
+#import "Tool.h"
 @interface UserInfoController ()<UIScrollViewDelegate>
 @property (nonatomic,strong) UIView *topView;        /**< 顶部  */
 @property (nonatomic,strong) UIView *midView;        /**< 中间  */
@@ -19,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor grayColor];
     // Do any additional setup after loading the view.
     [self setup];
 }
@@ -41,7 +41,7 @@
     _baseScroll = [[UIScrollView alloc]init];
     _baseScroll.delegate = self;
     _baseScroll.contentSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height+40);
-    _baseScroll.backgroundColor = [UIColor orangeColor];
+    _baseScroll.backgroundColor = RGBColor(235, 235, 235, 1);
     _baseScroll.showsVerticalScrollIndicator = NO;
     _baseScroll.contentOffset = CGPointMake(self.view.frame.size.width,0);
     [self.view addSubview:_baseScroll];
@@ -55,7 +55,7 @@
     _topView.backgroundColor = [UIColor whiteColor];
     [_baseScroll addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_baseScroll).mas_offset(40);
+        make.top.equalTo(_baseScroll).mas_offset(60);
         make.left.and.right.equalTo(_baseScroll);
         make.width.equalTo(self.view.mas_width);
         make.height.mas_equalTo(100);
@@ -68,7 +68,7 @@
     _midView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_midView];
     [_midView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_topView.mas_bottom).mas_offset(70);
+        make.top.equalTo(_topView.mas_bottom).mas_offset(80);
         make.height.mas_equalTo(50);
         make.width.mas_equalTo(self.view.mas_width);
     }];

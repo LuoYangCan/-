@@ -36,7 +36,7 @@
     }
     self.viewControllers = viewControllers;
     self.selectedIndex = 0;
-    [[UITabBar appearance]setBarTintColor:RGBColor(195, 255, 62, 1)];
+//    [[UITabBar appearance]setBarTintColor:RGBColor(195, 255, 62, 1)];
     [UITabBar appearance].translucent = NO;
     
 }
