@@ -9,6 +9,7 @@
 #import "BaseTabController.h"
 #import "HomeViewController.h"
 #import "UserInfoController.h"
+#import "Tool.h"
 @interface BaseTabController ()
 
 @end
@@ -35,6 +36,9 @@
     }
     self.viewControllers = viewControllers;
     self.selectedIndex = 0;
+    [[UITabBar appearance]setBarTintColor:RGBColor(195, 255, 62, 1)];
+    [UITabBar appearance].translucent = NO;
+    
 }
 
 

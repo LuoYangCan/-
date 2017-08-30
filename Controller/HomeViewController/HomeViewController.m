@@ -47,17 +47,7 @@
 
 }
 
-//-(void)initSearchBar{
-//    self.topSearch = [[UISearchBar alloc]init];
-//    UIImage *img = [Tool GetImageWithColor:[UIColor clearColor] andHeight:32.0f];
-//    [self.topSearch setBackgroundImage:img];
-//    self.topSearch.delegate = self;
-//    [self.view addSubview:self.topSearch];
-//    [self.topSearch mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(self.view.mas_top).mas_offset(60);
-//        make.left.and.right.equalTo(self.view);
-//    }];
-//}
+
 -(void)initbaseTableView{
     self.baseTableView = [[UITableView alloc]init];
     self.baseTableView.backgroundColor = [UIColor whiteColor];

@@ -7,17 +7,21 @@
 //
 
 #import "UserInfoController.h"
-
-@interface UserInfoController ()
-
+#import <Masonry.h>
+@interface UserInfoController ()<UIScrollViewDelegate>
+@property (nonatomic,strong) UIView *topView;        /**< 顶部  */
+@property (nonatomic,strong) UIView *midView;        /**< 中间  */
+@property (nonatomic,strong) UIView *bottomView;        /**< 底部  */
+@property (nonatomic,strong) UIScrollView *baseScroll;        /**< 背景  */
 @end
 
 @implementation UserInfoController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor grayColor];
     // Do any additional setup after loading the view.
+    [self setup];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,6 +29,63 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)setup{
+    [self initBackground];
+    [self initTop];
+    [self initMid];
+    [self initBottom];
+}
+
+-(void)initBackground{
+    _baseScroll = [[UIScrollView alloc]init];
+    _baseScroll.delegate = self;
+    _baseScroll.contentSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height+40);
+    _baseScroll.backgroundColor = [UIColor orangeColor];
+    _baseScroll.showsVerticalScrollIndicator = NO;
+    _baseScroll.contentOffset = CGPointMake(self.view.frame.size.width,0);
+    [self.view addSubview:_baseScroll];
+    [_baseScroll mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.and.bottom.equalTo(self.view);
+    }];
+}
+
+-(void)initTop{
+    _topView = [[UIView alloc]init];
+    _topView.backgroundColor = [UIColor whiteColor];
+    [_baseScroll addSubview:_topView];
+    [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_baseScroll).mas_offset(40);
+        make.left.and.right.equalTo(_baseScroll);
+        make.width.equalTo(self.view.mas_width);
+        make.height.mas_equalTo(100);
+        make.bottom.equalTo(_baseScroll).mas_offset(-480);
+    }];
+}
+
+-(void)initMid{
+    _midView = [[UIView alloc]init];
+    _midView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_midView];
+    [_midView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_topView.mas_bottom).mas_offset(70);
+        make.height.mas_equalTo(50);
+        make.width.mas_equalTo(self.view.mas_width);
+    }];
+}
+
+
+
+-(void)initBottom{
+    _bottomView = [[UIView alloc]init];
+    _bottomView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_bottomView];
+    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_midView.mas_bottom).mas_offset(80);
+        make.width.equalTo(self.view.mas_width);
+        make.height.mas_equalTo(50);
+    }];
+}
 /*
 #pragma mark - Navigation
 
@@ -35,4 +96,8 @@
 }
 */
 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"%f",_baseScroll.contentSize.height);
+}
 @end
