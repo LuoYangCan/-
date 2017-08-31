@@ -97,7 +97,4 @@
 */
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"%f",_baseScroll.contentSize.height);
-}
 @end
