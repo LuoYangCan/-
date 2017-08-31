@@ -66,6 +66,26 @@
         make.height.mas_equalTo(100);
         make.bottom.equalTo(_baseScroll).mas_offset(-480);
     }];
+    
+    UILabel *userLbl = [[UILabel alloc]init];
+    [userLbl setText:@"EnTaroAtanis"];
+    [_topView addSubview:userLbl];
+    [userLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_topView).with.mas_offset(130);
+        make.centerY.equalTo(_topView.mas_centerY);
+        make.width.mas_equalTo(100);
+    }];
+    
+    UIImageView *headImgV = [[UIImageView alloc]init];
+    headImgV.backgroundColor = RGBColor(190, 190, 190, 1);
+    headImgV.layer.cornerRadius = 15.0f;
+    headImgV.layer.masksToBounds = YES;
+    [_topView addSubview:headImgV];
+    [headImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_topView).with.mas_offset(30);
+        make.top.equalTo(_topView).with.mas_offset(15);
+        make.width.and.height.mas_equalTo(70);
+    }];
 }
 
 
@@ -100,7 +120,7 @@
     _bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_bottomView];
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_midView.mas_bottom).mas_offset(80);
+        make.top.equalTo(_midView.mas_bottom).mas_offset(222);
         make.width.equalTo(self.view.mas_width);
         make.height.mas_equalTo(50);
     }];
