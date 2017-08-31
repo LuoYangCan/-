@@ -37,6 +37,7 @@
     [self initBottom];
 }
 
+//背景scroll
 -(void)initBackground{
     _baseScroll = [[UIScrollView alloc]init];
     _baseScroll.delegate = self;
@@ -50,6 +51,10 @@
     }];
 }
 
+
+
+
+//顶部
 -(void)initTop{
     _topView = [[UIView alloc]init];
     _topView.backgroundColor = [UIColor whiteColor];
@@ -63,19 +68,33 @@
     }];
 }
 
+
+//中间
 -(void)initMid{
     _midView = [[UIView alloc]init];
     _midView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_midView];
     [_midView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_topView.mas_bottom).mas_offset(80);
+        make.top.equalTo(_topView.mas_bottom).mas_offset(100);
         make.height.mas_equalTo(50);
         make.width.mas_equalTo(self.view.mas_width);
     }];
+    
+    
+    UILabel *collectionlbl = [[UILabel alloc]init];
+    [collectionlbl setText:@"我的收藏"];
+    [_midView addSubview:collectionlbl];
+    [collectionlbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_midView).mas_offset(20);
+        make.top.equalTo(_midView).mas_offset(15);
+        make.width.mas_equalTo(70);
+        make.height.mas_equalTo(20);
+    }];
+    
 }
 
 
-
+//底部
 -(void)initBottom{
     _bottomView = [[UIView alloc]init];
     _bottomView.backgroundColor = [UIColor whiteColor];
@@ -84,6 +103,16 @@
         make.top.equalTo(_midView.mas_bottom).mas_offset(80);
         make.width.equalTo(self.view.mas_width);
         make.height.mas_equalTo(50);
+    }];
+    UILabel *logoutlabl = [[UILabel alloc]init];
+    [logoutlabl setText:@"注销"];
+    [logoutlabl setTextColor:[UIColor redColor]];
+    [_bottomView addSubview:logoutlabl];
+    [logoutlabl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_bottomView.mas_centerX).mas_offset(15);
+        make.top.equalTo(_bottomView).mas_offset(15);
+        make.width.mas_equalTo(70);
+        make.height.mas_equalTo(20);
     }];
 }
 /*
