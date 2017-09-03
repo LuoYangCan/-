@@ -9,12 +9,13 @@
 #import "SearchView.h"
 #import <Masonry.h>
 #import "Tool.h"
+#import "SearchTableViewCell.h"
 
 @interface SearchView ()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *SearchTable;        /**< 搜索列表  */
 @property (nonatomic,strong) UISearchBar *SearchBar;        /**< 搜索框    */
-
+@property (nonatomic,strong) NSMutableArray *searchArray;        /**< 搜索结果  */
 @end
 
 @implementation SearchView
@@ -83,19 +84,29 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (NSArray *)setSearchArray{
+    NSArray * array = @[@{ @"title":@"汉族",
+                           @"content_id":@"Han"},
+                        @{ @"title":@"藏族",
+                           @"content_id":@"Zang"}
+                        ];
+    return [array copy];
+}
 #pragma mark - UITableViewDelegate&&UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 15;
+    return _searchArray.count;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell"];
+    SearchTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell"];
     if (!cell) {
-       cell = [[UITableViewCell alloc]init];
+        cell = [[SearchTableViewCell alloc]initWithArray:_searchArray andRow:indexPath];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -105,6 +116,15 @@
 
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    NSString *searchStr = searchBar.text;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c] %@",@"title",searchStr];
+    if (_searchArray != nil) {
+        [_searchArray removeAllObjects];
+    }
+    NSArray *array = [self setSearchArray];
+    _searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
+    NSLog(@"return    %@",_searchArray);
+    [_SearchTable reloadData];
     
 }
 @end
