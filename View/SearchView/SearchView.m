@@ -90,7 +90,16 @@
     NSArray * array = @[@{ @"title":@"汉族",
                            @"content_id":@"Han"},
                         @{ @"title":@"藏族",
-                           @"content_id":@"Zang"}
+                           @"content_id":@"Zang"},
+                        @{ @"title":@"蒙古族",
+                           @"content_id":@"Menggu"},
+                        @{ @"title":@"回族",
+                           @"content_id":@"Hui"},
+                        @{ @"title":@"苗族",
+                           @"content_id":@"Miao"},
+                        @{ @"title":@"傈僳族",
+                           @"content_id":@"Lisu"}
+
                         ];
     return [array copy];
 }
