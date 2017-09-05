@@ -133,7 +133,30 @@
     NSArray *array = [self setSearchArray];
     _searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
     NSLog(@"return    %@",_searchArray);
+    if ([_searchArray isEqualToArray:@[]]) {
+        [_searchArray addObject:@{@"title":@"没有相关信息",
+                                    @"content_id":@"nil"}];
+            NSLog(@"return    %@",_searchArray);
+    }
     [_SearchTable reloadData];
     
+}
+
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+        NSString *searchStr = searchText;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c] %@",@"title",searchStr];
+        if (_searchArray != nil) {
+            [_searchArray removeAllObjects];
+        }
+        NSArray *array = [self setSearchArray];
+        _searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
+        NSLog(@"return    %@",_searchArray);
+        if ([_searchArray isEqualToArray:@[]]) {
+            [_searchArray addObject:@{@"title":@"没有相关信息",
+                                      @"content_id":@"nil"}];
+            NSLog(@"return    %@",_searchArray);
+        }
+        [_SearchTable reloadData];
 }
 @end
