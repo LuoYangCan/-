@@ -8,7 +8,7 @@
 
 #import "EtiquetteInfoController.h"
 #import "Tool.h"
-
+#import <Masonry.h>
 @interface EtiquetteInfoController ()<UIScrollViewDelegate>
 @property (nonatomic,strong) UILabel *titleLabl;        /**< 标题  */
 @property (nonatomic,strong) UILabel *contentLabl;        /**< 内容  */
@@ -69,6 +69,20 @@
 -(void)initUI{
     _titleLabl = [[UILabel alloc]init];
     _contentLabl = [[UILabel alloc]init];
+    @weakify(self);
+    [self setTitleandContentwithBlock:^(NSString *title, NSMutableAttributedString *AttrStr) {
+        @strongify(self);
+        self.titleLabl.text = title;
+        self.contentLabl.numberOfLines = 0;
+        self.contentLabl.attributedText =AttrStr;
+        [self.contentLabl sizeToFit];
+        [self.view addSubview:self.titleLabl];
+        [self.view addSubview:self.contentLabl];
+        [self.titleLabl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.backgroundView).mas_offset(50);
+            make.left.equalTo(self.backgroundView).mas_offset(30);
+        }];
+    }];
     
 }
 
