@@ -10,6 +10,7 @@
 #import <Masonry.h>
 #import "Tool.h"
 #import "SearchTableViewCell.h"
+#import "EtiquetteInfoController.h"
 
 @interface SearchView ()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -121,7 +122,14 @@
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dic = _searchArray[indexPath.row];
+    NSString *contentid = dic[@"content_id"];
+    EtiquetteInfoController *VC =[[EtiquetteInfoController alloc]initWithContent_Id:contentid];
+    [self presentViewController:VC animated:YES completion:^{
+        NSLog(@"%@\n\n\n",contentid);
+    }];
+}
 
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
@@ -132,11 +140,9 @@
     }
     NSArray *array = [self setSearchArray];
     _searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
-    NSLog(@"return    %@",_searchArray);
     if ([_searchArray isEqualToArray:@[]]) {
         [_searchArray addObject:@{@"title":@"没有相关信息",
                                     @"content_id":@"nil"}];
-            NSLog(@"return    %@",_searchArray);
     }
     [_SearchTable reloadData];
     
@@ -151,11 +157,9 @@
         }
         NSArray *array = [self setSearchArray];
         _searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
-        NSLog(@"return    %@",_searchArray);
         if ([_searchArray isEqualToArray:@[]]) {
             [_searchArray addObject:@{@"title":@"没有相关信息",
                                       @"content_id":@"nil"}];
-            NSLog(@"return    %@",_searchArray);
         }
         [_SearchTable reloadData];
 }

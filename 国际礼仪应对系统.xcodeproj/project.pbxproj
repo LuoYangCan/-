@@ -14,7 +14,7 @@
 		683D4DE51F45A982000FEFA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 683D4DE41F45A982000FEFA7 /* Assets.xcassets */; };
 		683D4DE81F45A982000FEFA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683D4DE61F45A982000FEFA7 /* LaunchScreen.storyboard */; };
 		684117EA1F5FACAC00B0D155 /* EtiquetteInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 684117E91F5FACAC00B0D155 /* EtiquetteInfoController.m */; };
-		6841AD221F4ECE89001B63DA /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6841AD211F4ECE89001B63DA /* SearchView.m */; };
+		684117F21F6065B900B0D155 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 684117F11F6065B900B0D155 /* SearchView.m */; };
 		688A7A831F5C640600BC7498 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688A7A821F5C640600BC7498 /* SearchTableViewCell.m */; };
 		68B7A6011F47328200264318 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6001F47328200264318 /* HomeViewController.m */; };
 		68B7A6051F47373D00264318 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6041F47373D00264318 /* Tool.m */; };
@@ -39,8 +39,8 @@
 		683D4DE91F45A982000FEFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		684117E81F5FACAC00B0D155 /* EtiquetteInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtiquetteInfoController.h; sourceTree = "<group>"; };
 		684117E91F5FACAC00B0D155 /* EtiquetteInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EtiquetteInfoController.m; sourceTree = "<group>"; };
-		6841AD201F4ECE89001B63DA /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
-		6841AD211F4ECE89001B63DA /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		684117F01F6065B900B0D155 /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
+		684117F11F6065B900B0D155 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		688A7A811F5C640600BC7498 /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		688A7A821F5C640600BC7498 /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		68B7A5FF1F47328200264318 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -115,13 +115,13 @@
 			path = EtiquetteInfoController;
 			sourceTree = "<group>";
 		};
-		6841AD1F1F4ECE51001B63DA /* SearchView */ = {
+		684117EF1F6065B900B0D155 /* SearchController */ = {
 			isa = PBXGroup;
 			children = (
-				6841AD201F4ECE89001B63DA /* SearchView.h */,
-				6841AD211F4ECE89001B63DA /* SearchView.m */,
+				684117F01F6065B900B0D155 /* SearchView.h */,
+				684117F11F6065B900B0D155 /* SearchView.m */,
 			);
-			path = SearchView;
+			path = SearchController;
 			sourceTree = "<group>";
 		};
 		688A7A801F5C63ED00BC7498 /* SearchTableViewCell */ = {
@@ -136,6 +136,7 @@
 		68B7A5FB1F47324200264318 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				684117EF1F6065B900B0D155 /* SearchController */,
 				684117E71F5FAC9B00B0D155 /* EtiquetteInfoController */,
 				68EC0D8F1F55ACE600C11467 /* UserInfoController */,
 				68EC0D881F557E3100C11467 /* BaseTabController */,
@@ -155,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				688A7A801F5C63ED00BC7498 /* SearchTableViewCell */,
-				6841AD1F1F4ECE51001B63DA /* SearchView */,
 				68D57E821F4835A20085ED38 /* HomeTableViewCell */,
 			);
 			path = View;
@@ -346,10 +346,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				684117F21F6065B900B0D155 /* SearchView.m in Sources */,
 				68B7A6051F47373D00264318 /* Tool.m in Sources */,
 				683D4DE01F45A982000FEFA7 /* ViewController.m in Sources */,
 				68D57E851F4835B40085ED38 /* HomeTableViewCell.m in Sources */,
-				6841AD221F4ECE89001B63DA /* SearchView.m in Sources */,
 				68EC0D8E1F557EF000C11467 /* BaseTabController.m in Sources */,
 				684117EA1F5FACAC00B0D155 /* EtiquetteInfoController.m in Sources */,
 				68EC0D921F55ACF500C11467 /* UserInfoController.m in Sources */,

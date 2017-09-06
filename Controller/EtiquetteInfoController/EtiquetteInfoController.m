@@ -21,10 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setup];
 }
 
 -(void)setup{
-    
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self initBaseScrollView];
+    [self initUI];
 }
 -(NSArray *)setDetailDic{
     NSArray *array = @[@{   @"content_id":@"Han",
@@ -38,32 +41,34 @@
                        ];
     return [array copy];
 }
--(void)initWithContent_Id:(NSString *)content_id{
-    self.contentid = content_id;
+-(instancetype)initWithContent_Id:(NSString *)content_id{
+    if (self = [super init]) {
+        self.contentid = content_id;
+    }
+    return self;
+
 }
 -(void)setTitleandContentwithBlock:(void(^) (NSString * title, NSMutableAttributedString *AttrStr ))block{
+    NSArray *array = [self setDetailDic];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c] %@",@"content_id",_contentid];
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
+    NSDictionary *dic = mutableArray[0];
+    NSString *str = dic[@"content"];
+    //设置内容
+    NSMutableAttributedString *AttrStr = [[NSMutableAttributedString alloc]initWithString:str];
+    [AttrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, 0)];
+    //段落
+    NSMutableParagraphStyle *para = [[NSMutableParagraphStyle alloc]init];
+    //行间距
+    para.lineSpacing = 7;
+    para.paragraphSpacing = 17;
+    para.alignment = NSTextAlignmentLeft;
+    [AttrStr addAttribute:NSParagraphStyleAttributeName value:para range:NSMakeRange(0, [dic[@"content"] length])];
+    
+    //设置标题
+    NSString *title = dic[@"title"];
     if (block) {
-        NSArray *array = [self setDetailDic];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c] %@",@"content_id",_contentid];
-        NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
-        NSDictionary *dic = [mutableArray copy];
-        //设置内容
-        NSMutableAttributedString *AttrStr = [[NSMutableAttributedString alloc]initWithString:dic[@"content"] ];
-        [AttrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, 3)];
-        //段落
-        NSMutableParagraphStyle *para = [[NSMutableParagraphStyle alloc]init];
-        //行间距
-        para.lineSpacing = 7;
-        para.paragraphSpacing = 17;
-        para.alignment = NSTextAlignmentLeft;
-        [AttrStr addAttribute:NSParagraphStyleAttributeName value:para range:NSMakeRange(0, [dic[@"content"] length])];
-        
-        //设置标题
-        NSString *title = dic[@"title"];
-        
-        
         block(title, AttrStr);
-        
     }
 }
 -(void)initUI{
@@ -73,14 +78,27 @@
     [self setTitleandContentwithBlock:^(NSString *title, NSMutableAttributedString *AttrStr) {
         @strongify(self);
         self.titleLabl.text = title;
+        self.titleLabl.backgroundColor = [UIColor whiteColor];
+        self.titleLabl.font = [UIFont systemFontOfSize:28];
+        [self.titleLabl sizeToFit];
         self.contentLabl.numberOfLines = 0;
         self.contentLabl.attributedText =AttrStr;
         [self.contentLabl sizeToFit];
-        [self.view addSubview:self.titleLabl];
+        CGFloat title_height = self.titleLabl.bounds.size.height;
+        CGFloat content_height = self.contentLabl.bounds.size.height;
+        [self.backgroundView addSubview:self.titleLabl];
         [self.view addSubview:self.contentLabl];
         [self.titleLabl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.backgroundView).mas_offset(50);
             make.left.equalTo(self.backgroundView).mas_offset(30);
+//            make.width.mas_equalTo(200);
+//            make.height.mas_equalTo(30);
+            make.bottom.equalTo(self.backgroundView).offset(content_height + title_height + 70);
+        }];
+        [self.contentLabl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.titleLabl.mas_bottom).mas_offset(30);
+            make.left.equalTo(self.view).with.mas_offset(15);
+            make.right.equalTo(self.view).mas_offset(-15);
         }];
     }];
     
@@ -89,10 +107,14 @@
 
 
 -(void)initBaseScrollView{
-    _backgroundView = [[UIScrollView alloc]init];
-    _backgroundView.delegate = self;
-    _backgroundView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
-
+    self.backgroundView = [[UIScrollView alloc]init];
+    self.backgroundView.backgroundColor = [UIColor orangeColor];
+    self.backgroundView.delegate = self;
+//    self.backgroundView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT*2);
+    [self.view addSubview:self.backgroundView];
+    [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.left.and.right.equalTo(self.view);
+    }];
 }
 /*
 #pragma mark - Navigation

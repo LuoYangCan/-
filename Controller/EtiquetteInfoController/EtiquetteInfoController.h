@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface EtiquetteInfoController : UIViewController
+-(instancetype)initWithContent_Id:(NSString *)content_id;
 
 @end
