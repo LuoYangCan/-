@@ -19,5 +19,8 @@
 
 
 
+-(void)RequestwithData:(NSDictionary *)data andURLparameters:(NSString *)parameters Completion:(void (^)( NSError * , id , NSURLSessionTask * ))block;
+
+
 
 @end
