@@ -10,6 +10,7 @@
 #import "Tool.h"
 #import "HomeTableViewCell.h"
 #import "SearchView.h"
+#import "EtiquetteInfoController.h"
 
 @interface HomeViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 //@property (nonatomic,strong) UISearchBar *topSearch ;
@@ -20,6 +21,7 @@
 @property (nonatomic,assign) CGFloat Offset;        /**< 滑动  */
 @property (nonatomic,strong) UILabel *searchlbl;        /**< 搜索文字  */
 @property (nonatomic,strong) UIRefreshControl *RefreshControl;        /**< 下拉刷新  */
+@property (nonatomic,strong) NSMutableArray *dataArray;        /**< 数据数组  */
 @end
 
 @implementation HomeViewController
@@ -28,6 +30,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setup];
+}
+
+-(NSMutableArray *)dataArray{
+    if (!_dataArray) {
+        _dataArray = [[NSMutableArray alloc]init];
+    }
+    return _dataArray;
 }
 
 -(void)setup{
@@ -162,9 +171,18 @@
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-       HomeTableViewCell *cell = [[HomeTableViewCell alloc]initWithDic:nil];
+    NSDictionary *dic = self.dataArray[indexPath.row];
+    HomeTableViewCell *cell = [[HomeTableViewCell alloc]initWithDic:dic];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dic = self.dataArray[indexPath.row];
+    NSString *content_id = dic[@"content_id"];
+    EtiquetteInfoController *etiVC = [[EtiquetteInfoController alloc]initWithContent_Id:content_id];
+    [self presentViewController:etiVC animated:YES completion:nil];
 }
 
 

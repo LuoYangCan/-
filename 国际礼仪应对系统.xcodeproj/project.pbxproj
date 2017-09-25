@@ -16,6 +16,7 @@
 		684117EA1F5FACAC00B0D155 /* EtiquetteInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 684117E91F5FACAC00B0D155 /* EtiquetteInfoController.m */; };
 		684117F21F6065B900B0D155 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 684117F11F6065B900B0D155 /* SearchView.m */; };
 		684117F61F615FF900B0D155 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 684117F51F615FF900B0D155 /* Network.m */; };
+		686040461F78A08E005E1B38 /* LocalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 686040451F78A08E005E1B38 /* LocalData.m */; };
 		688A7A831F5C640600BC7498 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688A7A821F5C640600BC7498 /* SearchTableViewCell.m */; };
 		68B7A6011F47328200264318 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6001F47328200264318 /* HomeViewController.m */; };
 		68B7A6051F47373D00264318 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6041F47373D00264318 /* Tool.m */; };
@@ -44,6 +45,8 @@
 		684117F11F6065B900B0D155 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		684117F41F615FF900B0D155 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		684117F51F615FF900B0D155 /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
+		686040441F78A08E005E1B38 /* LocalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalData.h; sourceTree = "<group>"; };
+		686040451F78A08E005E1B38 /* LocalData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalData.m; sourceTree = "<group>"; };
 		688A7A811F5C640600BC7498 /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		688A7A821F5C640600BC7498 /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		68B7A5FF1F47328200264318 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -136,6 +139,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		686040431F78A084005E1B38 /* LocalData */ = {
+			isa = PBXGroup;
+			children = (
+				686040441F78A08E005E1B38 /* LocalData.h */,
+				686040451F78A08E005E1B38 /* LocalData.m */,
+			);
+			path = LocalData;
+			sourceTree = "<group>";
+		};
 		688A7A801F5C63ED00BC7498 /* SearchTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +172,7 @@
 		68B7A5FC1F47324200264318 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				686040431F78A084005E1B38 /* LocalData */,
 				684117F31F615FEC00B0D155 /* Network */,
 			);
 			path = Model;
@@ -265,7 +278,7 @@
 		683D4DCD1F45A982000FEFA7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "孤岛";
 				TargetAttributes = {
 					683D4DD41F45A982000FEFA7 = {
@@ -368,6 +381,7 @@
 				68EC0D921F55ACF500C11467 /* UserInfoController.m in Sources */,
 				683D4DDD1F45A982000FEFA7 /* AppDelegate.m in Sources */,
 				683D4DDA1F45A982000FEFA7 /* main.m in Sources */,
+				686040461F78A08E005E1B38 /* LocalData.m in Sources */,
 				68B7A6011F47328200264318 /* HomeViewController.m in Sources */,
 				684117F61F615FF900B0D155 /* Network.m in Sources */,
 				688A7A831F5C640600BC7498 /* SearchTableViewCell.m in Sources */,
@@ -406,7 +420,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -414,7 +430,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -454,7 +474,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -462,7 +484,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
