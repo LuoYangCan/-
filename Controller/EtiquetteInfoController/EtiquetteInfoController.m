@@ -27,7 +27,7 @@
 }
 
 -(void)setup{
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
     [self initBaseScrollView];
     [self initUI];
 }
@@ -80,6 +80,10 @@
         self.contentLabl.numberOfLines = 0;
         self.contentLabl.attributedText =AttrStr;
         [self.contentLabl sizeToFit];
+        UIButton *button = [[UIButton alloc]init];
+        [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
         [self.backgroundView addSubview:self.titleLabl];
         [self.backgroundView addSubview:self.contentLabl];
         [self.titleLabl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -95,10 +99,31 @@
             make.bottom.equalTo(self.backgroundView).mas_offset(-70);
             make.right.equalTo(self.view).mas_offset(-20);
         }];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.view.mas_centerY);
+            make.left.equalTo(self.view);
+            make.right.equalTo(self.contentLabl.mas_left);
+            make.height.mas_equalTo(70);
+        }];
     }];
+    
+    
     
 }
 
+
+-(void)back{
+//    @weakify(self)
+//    [UIView animateWithDuration:0.7 animations:^{
+//     @strongify(self)
+//        [self.backgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self.view.mas_right);
+//        }];
+//    } completion:^(BOOL finished) {
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    }];
+     [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 -(void)initBaseScrollView{

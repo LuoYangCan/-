@@ -210,16 +210,7 @@
             [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
                  make.bottom.equalTo(self.view.mas_top).mas_offset(200-scrollOffset);
             }];
-//            NSLog(@"%f",newoffsetY);
-//            NSLog(@"%f",scrollView.contentOffset.y);
-//            if (scrollView.isScrollEnabled && (newoffsetY >20 && newoffsetY <140)) {
-//                [UIView animateWithDuration:0.7 animations:^{
-//                    [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
-//                        make.bottom.equalTo(self.view.mas_top).mas_offset(60);
-//                    }];
-//                    [self.TopView.superview layoutIfNeeded];
-//                }];
-//            }
+
         }
 
     }
@@ -233,13 +224,9 @@
             if ((self.Offset >20 && self.Offset <140)) {
                 [self.TopView.superview layoutIfNeeded];
                 [UIView animateWithDuration:0.7 animations:^{
-                    //                                [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
-                    //                                    make.bottom.equalTo(self.view.mas_top).mas_offset(60);
-                    //                                }];
                     scrollView.contentOffset= CGPointMake(0, -60);
                     [self.TopView.superview layoutIfNeeded];
                 }completion:^(BOOL finished) {
-                    //                                scrollView.scrollEnabled = YES;
                 }];
             }
         }
@@ -265,30 +252,18 @@
             //            scrollView.scrollEnabled = NO;
             [self.TopView.superview layoutIfNeeded];
             [UIView animateWithDuration:0.7 animations:^{
-                //                                [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
-                //                                    make.bottom.equalTo(self.view.mas_top).mas_offset(60);
-                //                                }];
                 scrollView.contentOffset= CGPointMake(0, -60);
                 [self.TopView.superview layoutIfNeeded];
             }completion:^(BOOL finished) {
-                //                                scrollView.scrollEnabled = YES;
             }];
         }
         
         
-//        if (scrollView.contentOffset.y <= -320) {
-//            [self.RefreshControl beginRefreshing];
-//            self.RefreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"正在刷新"];
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [self.RefreshControl endRefreshing];
-//            });
-//        }
+
     }
 }
 
 
 
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0){
-//    
-//}
+
 @end
