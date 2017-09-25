@@ -84,16 +84,16 @@
         [self.backgroundView addSubview:self.contentLabl];
         [self.titleLabl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.backgroundView).mas_offset(50);
-            make.left.equalTo(self.backgroundView).mas_offset(30);
+            make.left.equalTo(self.backgroundView).mas_offset(40);
 //            make.width.mas_equalTo(200);
 //            make.height.mas_equalTo(30);
 //            make.bottom.equalTo(self.backgroundView).offset(content_height + title_height + 70);
         }];
         [self.contentLabl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.titleLabl.mas_bottom).mas_offset(30);
-            make.left.equalTo(self.view).mas_offset(20);
+            make.left.equalTo(self.view).mas_offset(45);
             make.bottom.equalTo(self.backgroundView).mas_offset(-70);
-            make.right.equalTo(self.view).mas_offset(-15);
+            make.right.equalTo(self.view).mas_offset(-20);
         }];
     }];
     

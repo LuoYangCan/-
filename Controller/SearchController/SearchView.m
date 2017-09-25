@@ -31,34 +31,45 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(NSMutableArray *)searchArray{
+    if (!_searchArray) {
+        _searchArray = [[NSMutableArray alloc]init];
+    }
+    return _searchArray;
+}
 -(void)setup{
     self.view.backgroundColor = [UIColor whiteColor];
     [self initTableView];
     [self initSearchBar];
 }
 -(void)initTableView{
-    _SearchTable = [[UITableView alloc]init];
-    _SearchTable.delegate = self;
-    _SearchTable.dataSource = self;
-    [self.view addSubview:_SearchTable];
-    [_SearchTable mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.SearchTable = [[UITableView alloc]init];
+    self.SearchTable.rowHeight = 40;
+    self.SearchTable.delegate = self;
+    self.SearchTable.dataSource = self;
+    [self.view addSubview:self.SearchTable];
+    @weakify(self);
+    [self.SearchTable mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
         make.top.equalTo(self.view).mas_offset(60);
         make.left.and.right.and.bottom.equalTo(self.view);
     }];
 }
 -(void)initSearchBar{
-    _SearchBar = [[UISearchBar alloc]init];
-    _SearchBar.delegate = self;
-    [self.view addSubview:_SearchBar];
-    [_SearchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.SearchBar = [[UISearchBar alloc]init];
+    self.SearchBar.delegate = self;
+    [self.view addSubview:self.SearchBar];
+    @weakify(self)
+    [self.SearchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self)
         make.left.equalTo(self.view).mas_offset(10);
         make.top.equalTo(self.view).mas_offset(17);
         make.right.equalTo(self.view).mas_offset(-65);
-        make.bottom.equalTo(_SearchTable.mas_top).mas_offset(-5);
+        make.bottom.equalTo(self.SearchTable.mas_top).mas_offset(-5);
     }];
-    [Tool getClearSearchBar:_SearchBar];
-    [Tool setSearchBar:_SearchBar InsideBackgroundColor:RGBColor(219, 219, 219, 1)];
-    _SearchBar.placeholder = @"请输入搜索内容\t\t\t\t\t\t";
+    [Tool getClearSearchBar:self.SearchBar];
+    [Tool setSearchBar:self.SearchBar InsideBackgroundColor:RGBColor(219, 219, 219, 1)];
+    self.SearchBar.placeholder = @"请输入搜索内容\t\t\t\t\t\t";
     
     UIButton *searchLabl = [[UIButton alloc]init];
     [searchLabl setTitle:@"取消" forState:UIControlStateNormal];
@@ -66,10 +77,11 @@
     [searchLabl addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:searchLabl];
     [searchLabl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_SearchBar.mas_right).mas_offset(8);
+        @strongify(self);
+        make.left.equalTo(self.SearchBar.mas_right).mas_offset(8);
 //        make.right.equalTo(self.view);
-        make.top.equalTo(_SearchBar.mas_top);
-        make.height.equalTo(_SearchBar.mas_height);
+        make.top.equalTo(self.SearchBar.mas_top);
+        make.height.equalTo(self.SearchBar.mas_height);
     }];
     
 }
@@ -88,28 +100,13 @@
 */
 
 
-- (NSArray *)setSearchArray{
-    NSArray * array = @[@{ @"title":@"汉族",
-                           @"content_id":@"Han"},
-                        @{ @"title":@"藏族",
-                           @"content_id":@"Zang"},
-                        @{ @"title":@"蒙古族",
-                           @"content_id":@"Menggu"},
-                        @{ @"title":@"回族",
-                           @"content_id":@"Hui"},
-                        @{ @"title":@"苗族",
-                           @"content_id":@"Miao"},
-                        @{ @"title":@"傈僳族",
-                           @"content_id":@"Lisu"}
 
-                        ];
-    return [array copy];
-}
 #pragma mark - UITableViewDelegate&&UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.searchArray.count;
 }
+
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
@@ -124,7 +121,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *dic = _searchArray[indexPath.row];
+    NSDictionary *dic = self.searchArray[indexPath.row];
     NSString *contentid = dic[@"content_id"];
     EtiquetteInfoController *VC =[[EtiquetteInfoController alloc]initWithContent_Id:contentid];
     [self presentViewController:VC animated:YES completion:^{
@@ -149,7 +146,7 @@
     [[LocalData getInstance]getSearchMessagewithArray:self.searchArray Searchstr:searchStr completion:^(NSError *error, id responseArray) {
         @strongify(self);
         self.searchArray = responseArray;
-        [_SearchTable reloadData];
+        [self.SearchTable reloadData];
     }];
 }
 
@@ -169,8 +166,9 @@
     @weakify(self);
     [[LocalData getInstance]getSearchMessagewithArray:self.searchArray Searchstr:searchStr completion:^(NSError *error, id responseArray) {
         @strongify(self);
-        self.searchArray = responseArray;
-        [_SearchTable reloadData];
+        self.searchArray = [responseArray mutableCopy];
+        [self.SearchTable reloadData];
     }];
+
 }
 @end

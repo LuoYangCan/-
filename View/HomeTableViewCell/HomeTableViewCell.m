@@ -34,25 +34,33 @@
 }
 
 -(void)setup{
-
     UIImageView *leftimage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 20, 105 ,90)];
     leftimage.backgroundColor = RGBColor(211, 211, 211, 1);
     
-    UILabel *content = [[UILabel alloc]initWithFrame:CGRectMake(128, 45, SCREEN_WIDTH - 190, 60)];
+    UILabel *content = [[UILabel alloc]initWithFrame:CGRectMake(128, 46, SCREEN_WIDTH - 165, 60)];
+//    content.backgroundColor = [UIColor blackColor];
  //   content.backgroundColor = [UIColor cyanColor];
     content.textAlignment = NSTextAlignmentLeft;
-    content.numberOfLines = 2;
-    NSString *contentStr = [MessageDic[@"content"] substringToIndex:120];
+    content.numberOfLines = 3;
+    NSString *contentStr = [[NSString alloc]init];
+    NSString *str = MessageDic[@"content"];
+    if (str.length < 120) {
+        contentStr = str;
+    }else{
+        contentStr = [str substringToIndex:120];
+    }
 //    content.text = @"这个Cell非常的清真，超级清真，非常的清真，舒服的舒服哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦oooo o o o oooo哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦";
     content.text = contentStr;
-    [content setFont:[UIFont systemFontOfSize:12]];
+    [content setFont:[UIFont systemFontOfSize:13.5]];
     
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(127, 20, SCREEN_WIDTH, 20)];
+//    title.backgroundColor = [UIColor orangeColor];
    // title.backgroundColor = [UIColor greenColor];
     NSString *titletext = MessageDic[@"title"];
 //    title.text = @"这是一个非常清真的标题";
     title.text = titletext;
-    title.font = [UIFont systemFontOfSize:17];
+//    title.font = [UIFont systemFontOfSize:18];
+    title.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:18];
     title.textAlignment = NSTextAlignmentLeft;
     [self addSubview:title];
     [self addSubview:leftimage];
