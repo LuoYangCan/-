@@ -11,6 +11,7 @@
 #import "Tool.h"
 #import "SearchTableViewCell.h"
 #import "EtiquetteInfoController.h"
+#import "LocalData.h"
 
 @interface SearchView ()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -107,7 +108,7 @@
 #pragma mark - UITableViewDelegate&&UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _searchArray.count;
+    return self.searchArray.count;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -116,7 +117,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SearchTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell"];
     if (!cell) {
-        cell = [[SearchTableViewCell alloc]initWithArray:_searchArray andRow:indexPath];
+        cell = [[SearchTableViewCell alloc]initWithArray:self.searchArray andRow:indexPath];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -134,33 +135,42 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     NSString *searchStr = searchBar.text;
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c] %@",@"title",searchStr];
-    if (_searchArray != nil) {
-        [_searchArray removeAllObjects];
-    }
-    NSArray *array = [self setSearchArray];
-    _searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
-    if ([_searchArray isEqualToArray:@[]]) {
-        [_searchArray addObject:@{@"title":@"没有相关信息",
-                                    @"content_id":@"nil"}];
-    }
-    [_SearchTable reloadData];
-    
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c] %@",@"title",searchStr];
+//    if (_searchArray != nil) {
+//        [_searchArray removeAllObjects];
+//    }
+//    NSArray *array = [self setSearchArray];
+//    _searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
+//    if ([_searchArray isEqualToArray:@[]]) {
+//        [_searchArray addObject:@{@"title":@"没有相关信息",
+//                                    @"content_id":@"nil"}];
+//    }
+    @weakify(self);
+    [[LocalData getInstance]getSearchMessagewithArray:self.searchArray Searchstr:searchStr completion:^(NSError *error, id responseArray) {
+        @strongify(self);
+        self.searchArray = responseArray;
+        [_SearchTable reloadData];
+    }];
 }
 
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
         NSString *searchStr = searchText;
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c] %@",@"title",searchStr];
-        if (_searchArray != nil) {
-            [_searchArray removeAllObjects];
-        }
-        NSArray *array = [self setSearchArray];
-        _searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
-        if ([_searchArray isEqualToArray:@[]]) {
-            [_searchArray addObject:@{@"title":@"没有相关信息",
-                                      @"content_id":@"nil"}];
-        }
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c] %@",@"title",searchStr];
+//        if (_searchArray != nil) {
+//            [_searchArray removeAllObjects];
+//        }
+//        NSArray *array = [self setSearchArray];
+//        _searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
+//        if ([_searchArray isEqualToArray:@[]]) {
+//            [_searchArray addObject:@{@"title":@"没有相关信息",
+//                                      @"content_id":@"nil"}];
+//        }
+    @weakify(self);
+    [[LocalData getInstance]getSearchMessagewithArray:self.searchArray Searchstr:searchStr completion:^(NSError *error, id responseArray) {
+        @strongify(self);
+        self.searchArray = responseArray;
         [_SearchTable reloadData];
+    }];
 }
 @end

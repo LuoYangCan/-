@@ -14,4 +14,7 @@
 -(void)getArticalwithContent_id:(NSString *)Content_id completion:(void (^) (id responseArray, NSError * error))block;
 
 -(void)getDataArrayWithcompletion:(void(^) (NSArray * responseArray))completionblock;
+
+
+-(void)getSearchMessagewithArray:(NSMutableArray *)searchArray Searchstr:(NSString *)searchStr completion:(void (^) (NSError * error , id responseArray))block;
 @end

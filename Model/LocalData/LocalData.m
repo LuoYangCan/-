@@ -42,6 +42,24 @@ static LocalData *_LocalData = nil;
 }
 
 
+
+-(void)getSearchMessagewithArray:(NSMutableArray *)searchArray Searchstr:(NSString *)searchStr completion:(void (^) (NSError * error , id responseArray))block{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K CONTAINS[c] %@",@"title",searchStr];
+    if (searchArray != nil) {
+        [searchArray removeAllObjects];
+    }
+    NSArray *array = [self setSearchArray];
+    searchArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:predicate]];
+    if ([searchArray isEqualToArray:@[]]) {
+        [searchArray addObject:@{@"title":@"没有相关信息",
+                                  @"content_id":@"nil"}];
+    }
+    if (block) {
+        block(nil, [searchArray copy]);
+    }
+}
+
+
 -(NSArray *)setDetailDic{
     NSArray *array = @[@{   @"content_id":@"Han",
                             @"title":@"汉族的礼仪文化",
@@ -53,5 +71,26 @@ static LocalData *_LocalData = nil;
                             }
                        ];
     return array;
+}
+
+
+
+
+- (NSArray *)setSearchArray{
+    NSArray * array = @[@{ @"title":@"汉族",
+                           @"content_id":@"Han"},
+                        @{ @"title":@"藏族",
+                           @"content_id":@"Zang"},
+                        @{ @"title":@"蒙古族",
+                           @"content_id":@"Menggu"},
+                        @{ @"title":@"回族",
+                           @"content_id":@"Hui"},
+                        @{ @"title":@"苗族",
+                           @"content_id":@"Miao"},
+                        @{ @"title":@"傈僳族",
+                           @"content_id":@"Lisu"}
+                        
+                        ];
+    return [array copy];
 }
 @end

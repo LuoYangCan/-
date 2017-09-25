@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeTableViewCell : UITableViewCell
+
 -(instancetype)initWithDic:(NSDictionary *)dic;
+
+
 @end

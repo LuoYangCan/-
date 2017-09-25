@@ -11,6 +11,7 @@
 #import "HomeTableViewCell.h"
 #import "SearchView.h"
 #import "EtiquetteInfoController.h"
+#import "LocalData.h"
 
 @interface HomeViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 //@property (nonatomic,strong) UISearchBar *topSearch ;
@@ -34,7 +35,11 @@
 
 -(NSMutableArray *)dataArray{
     if (!_dataArray) {
-        _dataArray = [[NSMutableArray alloc]init];
+        __block NSArray *arr = [NSArray array];
+        [[LocalData getInstance]getDataArrayWithcompletion:^(NSArray *responseArray) {
+            arr = responseArray;
+        }];
+        _dataArray = [[NSMutableArray alloc]initWithArray:arr];
     }
     return _dataArray;
 }
@@ -161,7 +166,7 @@
 */
 #pragma mark - UITableViewDelegate&&UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 20;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -9,7 +9,9 @@
 #import "HomeTableViewCell.h"
 #import "Tool.h"
 @implementation HomeTableViewCell
-
+{
+    NSDictionary * MessageDic;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -25,7 +27,7 @@
 -(instancetype)initWithDic:(NSDictionary *)dic{
     if (self = [super init]) {
     //self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
-    
+        MessageDic = [NSDictionary dictionaryWithDictionary:dic];
         [self setup];
     }
     return self;
@@ -40,12 +42,16 @@
  //   content.backgroundColor = [UIColor cyanColor];
     content.textAlignment = NSTextAlignmentLeft;
     content.numberOfLines = 2;
-    content.text = @"这个Cell非常的清真，超级清真，非常的清真，舒服的舒服哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦oooo o o o oooo哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦";
+    NSString *contentStr = [MessageDic[@"content"] substringToIndex:120];
+//    content.text = @"这个Cell非常的清真，超级清真，非常的清真，舒服的舒服哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦oooo o o o oooo哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦";
+    content.text = contentStr;
     [content setFont:[UIFont systemFontOfSize:12]];
     
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(127, 20, SCREEN_WIDTH, 20)];
    // title.backgroundColor = [UIColor greenColor];
-    title.text = @"这是一个非常清真的标题";
+    NSString *titletext = MessageDic[@"title"];
+//    title.text = @"这是一个非常清真的标题";
+    title.text = titletext;
     title.font = [UIFont systemFontOfSize:17];
     title.textAlignment = NSTextAlignmentLeft;
     [self addSubview:title];
