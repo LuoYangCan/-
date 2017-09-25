@@ -187,7 +187,9 @@
     NSDictionary *dic = self.dataArray[indexPath.row];
     NSString *content_id = dic[@"content_id"];
     EtiquetteInfoController *etiVC = [[EtiquetteInfoController alloc]initWithContent_Id:content_id];
-    [self presentViewController:etiVC animated:YES completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:etiVC animated:YES completion:nil];
+    });
 }
 
 
@@ -257,9 +259,6 @@
             }completion:^(BOOL finished) {
             }];
         }
-        
-        
-
     }
 }
 
