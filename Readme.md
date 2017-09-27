@@ -1,1 +1,5 @@
-you can search International Etiquette in this app
+试做展示版本。
+
+还没学好爬虫，只有做做本地化展示一下。
+
+基本完成了界面功能。

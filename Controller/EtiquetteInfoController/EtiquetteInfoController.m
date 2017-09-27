@@ -69,8 +69,8 @@
     }
 }
 -(void)initUI{
-    _titleLabl = [[UILabel alloc]init];
-    _contentLabl = [[UILabel alloc]init];
+    self.titleLabl = [[UILabel alloc]init];
+    self.contentLabl = [[UILabel alloc]init];
     @weakify(self);
     [self setTitleandContentwithBlock:^(NSString *title, NSMutableAttributedString *AttrStr) {
         @strongify(self);
@@ -83,12 +83,16 @@
         UIButton *button = [[UIButton alloc]init];
         [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        UILabel *bottomLabl = [[UILabel alloc]init];
+        bottomLabl.text = @"----感谢您的阅读----";
+        bottomLabl.textAlignment = NSTextAlignmentCenter;
+        [self.backgroundView addSubview:bottomLabl];
         [self.view addSubview:button];
         [self.backgroundView addSubview:self.titleLabl];
         [self.backgroundView addSubview:self.contentLabl];
         [self.titleLabl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.backgroundView).mas_offset(50);
-            make.left.equalTo(self.backgroundView).mas_offset(40);
+            make.left.equalTo(self.backgroundView).mas_offset(30);
 //            make.width.mas_equalTo(200);
 //            make.height.mas_equalTo(30);
 //            make.bottom.equalTo(self.backgroundView).offset(content_height + title_height + 70);
@@ -96,7 +100,7 @@
         [self.contentLabl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.titleLabl.mas_bottom).mas_offset(30);
             make.left.equalTo(self.view).mas_offset(45);
-            make.bottom.equalTo(self.backgroundView).mas_offset(-70);
+            make.bottom.equalTo(self.backgroundView).mas_offset(-80);
             make.right.equalTo(self.view).mas_offset(-20);
         }];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -104,6 +108,11 @@
             make.left.equalTo(self.view);
             make.right.equalTo(self.contentLabl.mas_left);
             make.height.mas_equalTo(70);
+        }];
+        [bottomLabl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.and.right.equalTo(self.view);
+            make.top.equalTo(self.contentLabl.mas_bottom).with.offset(20);
+            make.height.mas_equalTo(30);
         }];
     }];
     
@@ -128,7 +137,7 @@
 
 -(void)initBaseScrollView{
     self.backgroundView = [[UIScrollView alloc]init];
-    self.backgroundView.backgroundColor = [UIColor orangeColor];
+    self.backgroundView.backgroundColor = RGBColor(235, 235, 235, 1);
     self.backgroundView.delegate = self;
 //    self.backgroundView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT*2);
     [self.view addSubview:self.backgroundView];
