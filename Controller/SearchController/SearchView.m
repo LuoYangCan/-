@@ -63,9 +63,9 @@
     [self.SearchBar mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self)
         make.left.equalTo(self.view).mas_offset(10);
-        make.top.equalTo(self.view).mas_offset(17);
+        make.top.equalTo(self.view).mas_offset(20);
         make.right.equalTo(self.view).mas_offset(-65);
-        make.bottom.equalTo(self.SearchTable.mas_top).mas_offset(-5);
+        make.bottom.equalTo(self.SearchTable.mas_top).mas_offset(-10);
     }];
     [Tool getClearSearchBar:self.SearchBar];
     [Tool setSearchBar:self.SearchBar InsideBackgroundColor:RGBColor(219, 219, 219, 1)];
@@ -73,7 +73,7 @@
     
     UIButton *searchLabl = [[UIButton alloc]init];
     [searchLabl setTitle:@"取消" forState:UIControlStateNormal];
-    [searchLabl setTitleColor:RGBColor(211, 211, 211, 1) forState:UIControlStateNormal];
+    [searchLabl setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [searchLabl addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:searchLabl];
     [searchLabl mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -16,6 +16,9 @@
 @property (nonatomic,strong) UILabel *contentLabl;        /**< 内容  */
 @property (nonatomic,strong) UIScrollView *backgroundView;        /**< 背景  */
 @property (nonatomic,strong) NSString *contentid;        /**< 代号  */
+@property (nonatomic,strong) UIButton *starBtn;        /**< 收藏按钮  */
+@property (nonatomic,strong) UIImage *touched;        /**< 已收藏  */
+@property (nonatomic,strong) UIImage *star;        /**< 可收藏  */
 @end
 
 @implementation EtiquetteInfoController
@@ -24,6 +27,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setup];
+}
+
+-(UIImage *)touched{
+    if (!_touched) {
+        _touched = [[UIImage alloc]init];
+    }
+    return _touched;
+}
+
+-(UIImage *)star{
+    if (!_star) {
+        _star = [[UIImage alloc]init];
+
+    }
+    return _star;
 }
 
 -(void)setup{
@@ -71,6 +89,8 @@
 -(void)initUI{
     self.titleLabl = [[UILabel alloc]init];
     self.contentLabl = [[UILabel alloc]init];
+    self.touched = [UIImage imageNamed:@"shoucang(touched)"];
+    self.star = [UIImage imageNamed:@"shoucang"];
     @weakify(self);
     [self setTitleandContentwithBlock:^(NSString *title, NSMutableAttributedString *AttrStr) {
         @strongify(self);
@@ -86,10 +106,19 @@
         UILabel *bottomLabl = [[UILabel alloc]init];
         bottomLabl.text = @"----感谢您的阅读----";
         bottomLabl.textAlignment = NSTextAlignmentCenter;
+        self.starBtn = [[UIButton alloc]init];
+        [self.starBtn setImage:self.star forState:UIControlStateNormal];
+        [self.starBtn addTarget:self action:@selector(starAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.backgroundView addSubview:self.starBtn];
         [self.backgroundView addSubview:bottomLabl];
         [self.view addSubview:button];
         [self.backgroundView addSubview:self.titleLabl];
         [self.backgroundView addSubview:self.contentLabl];
+        [self.starBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.backgroundView).mas_offset(SCREEN_WIDTH - 47);
+            make.top.equalTo(self.backgroundView).mas_offset(35);
+            make.width.and.height.mas_equalTo(30);
+        }];
         [self.titleLabl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.backgroundView).mas_offset(50);
             make.left.equalTo(self.backgroundView).mas_offset(30);
@@ -115,12 +144,18 @@
             make.height.mas_equalTo(30);
         }];
     }];
-    
+
     
     
 }
 
-
+-(void)starAction{
+    if ([self.starBtn.imageView.image isEqual:self.star]) {
+        [self.starBtn setImage:self.touched forState:UIControlStateNormal];
+    }else{
+        [self.starBtn setImage:self.star forState:UIControlStateNormal];
+    }
+}
 -(void)back{
 //    @weakify(self)
 //    [UIView animateWithDuration:0.7 animations:^{

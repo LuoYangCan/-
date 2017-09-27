@@ -39,14 +39,14 @@
 
 //背景scroll
 -(void)initBackground{
-    _baseScroll = [[UIScrollView alloc]init];
-    _baseScroll.delegate = self;
-    _baseScroll.contentSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height+40);
-    _baseScroll.backgroundColor = RGBColor(235, 235, 235, 1);
-    _baseScroll.showsVerticalScrollIndicator = NO;
-    _baseScroll.contentOffset = CGPointMake(self.view.frame.size.width,0);
-    [self.view addSubview:_baseScroll];
-    [_baseScroll mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.baseScroll = [[UIScrollView alloc]init];
+    self.baseScroll.delegate = self;
+    self.baseScroll.contentSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height+40);
+    self.baseScroll.backgroundColor = RGBColor(235, 235, 235, 1);
+    self.baseScroll.showsVerticalScrollIndicator = NO;
+    self.baseScroll.contentOffset = CGPointMake(self.view.frame.size.width,0);
+    [self.view addSubview:self.baseScroll];
+    [self.baseScroll mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.and.bottom.equalTo(self.view);
     }];
 }
@@ -56,34 +56,35 @@
 
 //顶部
 -(void)initTop{
-    _topView = [[UIView alloc]init];
-    _topView.backgroundColor = [UIColor whiteColor];
-    [_baseScroll addSubview:_topView];
-    [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_baseScroll).mas_offset(60);
-        make.left.and.right.equalTo(_baseScroll);
+    self.topView = [[UIView alloc]init];
+    self.topView.backgroundColor = [UIColor whiteColor];
+    [self.baseScroll addSubview:self.topView];
+    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.baseScroll).mas_offset(60);
+        make.left.and.right.equalTo(self.baseScroll);
         make.width.equalTo(self.view.mas_width);
         make.height.mas_equalTo(100);
-        make.bottom.equalTo(_baseScroll).mas_offset(-480);
+        make.bottom.equalTo(self.baseScroll).mas_offset(-480);
     }];
     
     UILabel *userLbl = [[UILabel alloc]init];
-    [userLbl setText:@"EnTaroAtanis"];
-    [_topView addSubview:userLbl];
+    [userLbl setText:@"Reus97"];
+    [self.topView addSubview:userLbl];
     [userLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_topView).with.mas_offset(130);
-        make.centerY.equalTo(_topView.mas_centerY);
+        make.left.equalTo(self.topView).with.mas_offset(130);
+        make.centerY.equalTo(self.topView.mas_centerY);
         make.width.mas_equalTo(100);
     }];
     
     UIImageView *headImgV = [[UIImageView alloc]init];
-    headImgV.backgroundColor = RGBColor(190, 190, 190, 1);
+    headImgV.image = [UIImage imageNamed:@"interesting"];
+//    headImgV.backgroundColor = RGBColor(190, 190, 190, 1);
     headImgV.layer.cornerRadius = 15.0f;
     headImgV.layer.masksToBounds = YES;
-    [_topView addSubview:headImgV];
+    [self.topView addSubview:headImgV];
     [headImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_topView).with.mas_offset(30);
-        make.top.equalTo(_topView).with.mas_offset(15);
+        make.left.equalTo(self.topView).with.mas_offset(30);
+        make.top.equalTo(self.topView).with.mas_offset(15);
         make.width.and.height.mas_equalTo(70);
     }];
 }
@@ -91,11 +92,11 @@
 
 //中间
 -(void)initMid{
-    _midView = [[UIView alloc]init];
-    _midView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:_midView];
-    [_midView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_topView.mas_bottom).mas_offset(100);
+    self.midView = [[UIView alloc]init];
+    self.midView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.midView];
+    [self.midView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.topView.mas_bottom).mas_offset(100);
         make.height.mas_equalTo(50);
         make.width.mas_equalTo(self.view.mas_width);
     }];
@@ -103,10 +104,10 @@
     
     UILabel *collectionlbl = [[UILabel alloc]init];
     [collectionlbl setText:@"我的收藏"];
-    [_midView addSubview:collectionlbl];
+    [self.midView addSubview:collectionlbl];
     [collectionlbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_midView).mas_offset(20);
-        make.top.equalTo(_midView).mas_offset(15);
+        make.left.equalTo(self.midView).mas_offset(20);
+        make.top.equalTo(self.midView).mas_offset(15);
         make.width.mas_equalTo(70);
         make.height.mas_equalTo(20);
     }];
@@ -116,21 +117,21 @@
 
 //底部
 -(void)initBottom{
-    _bottomView = [[UIView alloc]init];
-    _bottomView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:_bottomView];
-    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_midView.mas_bottom).mas_offset(222);
+    self.bottomView = [[UIView alloc]init];
+    self.bottomView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.bottomView];
+    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.midView.mas_bottom).mas_offset(222);
         make.width.equalTo(self.view.mas_width);
         make.height.mas_equalTo(50);
     }];
     UILabel *logoutlabl = [[UILabel alloc]init];
     [logoutlabl setText:@"注销"];
     [logoutlabl setTextColor:[UIColor redColor]];
-    [_bottomView addSubview:logoutlabl];
+    [self.bottomView addSubview:logoutlabl];
     [logoutlabl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(_bottomView.mas_centerX).mas_offset(15);
-        make.top.equalTo(_bottomView).mas_offset(15);
+        make.centerX.equalTo(self.bottomView.mas_centerX).mas_offset(15);
+        make.top.equalTo(self.bottomView).mas_offset(15);
         make.width.mas_equalTo(70);
         make.height.mas_equalTo(20);
     }];
