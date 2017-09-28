@@ -9,4 +9,5 @@ target '国际礼仪应对系统' do
 pod ‘AFNetworking’
 pod ‘Masonry’
 pod ‘MBProgressHUD’
+pod ‘SDWebImage’
 end

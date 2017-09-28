@@ -9,6 +9,8 @@
 #import "UserInfoController.h"
 #import <Masonry.h>
 #import "Tool.h"
+#import "StarViewController.h"
+
 @interface UserInfoController ()<UIScrollViewDelegate>
 @property (nonatomic,strong) UIView *topView;        /**< 顶部  */
 @property (nonatomic,strong) UIView *midView;        /**< 中间  */
@@ -60,7 +62,7 @@
     self.topView.backgroundColor = [UIColor whiteColor];
     [self.baseScroll addSubview:self.topView];
     [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.baseScroll).mas_offset(60);
+        make.top.equalTo(self.baseScroll).mas_offset(45);
         make.left.and.right.equalTo(self.baseScroll);
         make.width.equalTo(self.view.mas_width);
         make.height.mas_equalTo(100);
@@ -111,9 +113,13 @@
         make.width.mas_equalTo(70);
         make.height.mas_equalTo(20);
     }];
-    
+    UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toStarVC)];
+    [self.midView addGestureRecognizer:touch];
 }
-
+-(void)toStarVC{
+    StarViewController *starVC = [[StarViewController alloc]init];
+    [self presentViewController:starVC animated:YES completion:nil];
+}
 
 //底部
 -(void)initBottom{
