@@ -7,7 +7,26 @@
 //
 
 #import "LocationService.h"
-
+#import <CoreLocation/CoreLocation.h>
+@interface LocationService ()<CLLocationManagerDelegate>
+@property (nonatomic,strong) CLLocationManager *LocationManager;        /**< 定位  */
+@end
 @implementation LocationService
+
+-(instancetype)init{
+    if (self = [super init]) {
+        <#statements#>
+    }
+    return self;
+}
+
+
+-(void)getLocation{
+    if ([CLLocationManager locationServicesEnabled]) {
+        self.LocationManager = [[CLLocationManager alloc]init];
+        self.LocationManager.delegate = self;
+        self.LocationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    }
+}
 
 @end
