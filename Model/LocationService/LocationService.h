@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface LocationService : NSObject
-
+@property (nonatomic,copy) NSString *cityName;        /**< 城市的名字  */
 @end
