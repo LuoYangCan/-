@@ -11,8 +11,8 @@
 #import "Tool.h"
 
 
-@interface StarViewController ()
-
+@interface StarViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic,strong) UITableView *starTableview;        /**< 收藏列表  */
 @end
 
 @implementation StarViewController
@@ -29,7 +29,15 @@
 }
 
 -(void)setup{
+   [self initTableView];
     [self initUI];
+}
+
+-(UITableView *)starTableview{
+    if (!_starTableview) {
+        _starTableview = [[UITableView alloc]init];
+    }
+    return _starTableview;
 }
 
 
@@ -41,7 +49,7 @@
     [self.view addSubview:starLabl];
     [starLabl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.top.equalTo(self.view).with.offset(25);
+        make.top.equalTo(self.view).with.offset(28);
     }];
     
     UIButton * backBtn = [[UIButton alloc]init];
@@ -57,6 +65,36 @@
 
 -(void)back{
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(void)initTableView{
+    self.starTableview.delegate = self;
+    self.starTableview.dataSource = self;
+    self.starTableview.rowHeight = 60;
+    [self.view addSubview:self.starTableview];
+    [self.starTableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(self.view).with.mas_offset(40);
+    }];
+}
+#pragma mark - UITableViewDelegate&&UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 40;
+}
+
+// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"starCell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]init];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+    }
+    return cell;
 }
 /*
 #pragma mark - Navigation

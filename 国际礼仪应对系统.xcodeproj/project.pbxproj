@@ -17,6 +17,7 @@
 		684117EA1F5FACAC00B0D155 /* EtiquetteInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 684117E91F5FACAC00B0D155 /* EtiquetteInfoController.m */; };
 		684117F21F6065B900B0D155 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 684117F11F6065B900B0D155 /* SearchView.m */; };
 		684117F61F615FF900B0D155 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 684117F51F615FF900B0D155 /* Network.m */; };
+		685148801FB589ED008D3651 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6851487F1FB589ED008D3651 /* LocationService.m */; };
 		686040461F78A08E005E1B38 /* LocalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 686040451F78A08E005E1B38 /* LocalData.m */; };
 		688A7A831F5C640600BC7498 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 688A7A821F5C640600BC7498 /* SearchTableViewCell.m */; };
 		68B7A6011F47328200264318 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B7A6001F47328200264318 /* HomeViewController.m */; };
@@ -48,6 +49,8 @@
 		684117F11F6065B900B0D155 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		684117F41F615FF900B0D155 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		684117F51F615FF900B0D155 /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
+		6851487E1FB589ED008D3651 /* LocationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		6851487F1FB589ED008D3651 /* LocationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		686040441F78A08E005E1B38 /* LocalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalData.h; sourceTree = "<group>"; };
 		686040451F78A08E005E1B38 /* LocalData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalData.m; sourceTree = "<group>"; };
 		688A7A811F5C640600BC7498 /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
@@ -151,6 +154,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		6851487D1FB589DE008D3651 /* LocationService */ = {
+			isa = PBXGroup;
+			children = (
+				6851487E1FB589ED008D3651 /* LocationService.h */,
+				6851487F1FB589ED008D3651 /* LocationService.m */,
+			);
+			path = LocationService;
+			sourceTree = "<group>";
+		};
 		686040431F78A084005E1B38 /* LocalData */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +197,7 @@
 		68B7A5FC1F47324200264318 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6851487D1FB589DE008D3651 /* LocationService */,
 				686040431F78A084005E1B38 /* LocalData */,
 				684117F31F615FEC00B0D155 /* Network */,
 			);
@@ -386,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				684117F21F6065B900B0D155 /* SearchView.m in Sources */,
+				685148801FB589ED008D3651 /* LocationService.m in Sources */,
 				68B7A6051F47373D00264318 /* Tool.m in Sources */,
 				682418F51F7CBE550028A1B6 /* StarViewController.m in Sources */,
 				683D4DE01F45A982000FEFA7 /* ViewController.m in Sources */,
