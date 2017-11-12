@@ -92,7 +92,8 @@
     self.TopView.backgroundColor =RGBColor(235, 235, 235, 1);
     [self.baseTableView addSubview:self.TopView];
     [self.TopView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.and.right.equalTo(self.view);
+        make.left.and.right.equalTo(self.view);
+        make.top.equalTo(self.view);
         //make.top.equalTo(self.view.mas_top);
         make.bottom.equalTo(self.view.mas_top).mas_offset(200);
        // make.bottom.mas_equalTo(self.baseTableView.mas_top);
