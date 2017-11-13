@@ -51,7 +51,11 @@
     @weakify(self);
     [self.SearchTable mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
+        if (@available (iOS 11, *)) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).mas_offset(60);
+        }else{
         make.top.equalTo(self.view).mas_offset(60);
+        }
         make.left.and.right.and.bottom.equalTo(self.view);
     }];
 }
@@ -62,8 +66,12 @@
     @weakify(self)
     [self.SearchBar mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self)
+        if (@available (iOS 11, *)) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).mas_offset(20);
+        }else{
+            make.top.equalTo(self.view).mas_offset(20);
+        }
         make.left.equalTo(self.view).mas_offset(10);
-        make.top.equalTo(self.view).mas_offset(20);
         make.right.equalTo(self.view).mas_offset(-65);
         make.bottom.equalTo(self.SearchTable.mas_top).mas_offset(-10);
     }];

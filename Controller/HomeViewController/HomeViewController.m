@@ -66,7 +66,13 @@
     self.baseTableView.scrollIndicatorInsets = UIEdgeInsetsMake(200, 0, 0, 0);
     [self.view addSubview:self.baseTableView];
     [self.baseTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.and.right.and.bottom.equalTo(self.view);
+        make.left.and.right.equalTo(self.view);
+        if (@available (iOS 11, *)) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+        }else{
+            make.top.and.bottom.equalTo(self.view);
+        }
         //make.top.equalTo(self.view).mas_offset(200);
         //make.top.equalTo(self.TopView.mas_bottom);
     }];
@@ -93,9 +99,15 @@
     [self.baseTableView addSubview:self.TopView];
     [self.TopView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.equalTo(self.view);
-        make.top.equalTo(self.view);
-        //make.top.equalTo(self.view.mas_top);
-        make.bottom.equalTo(self.view.mas_top).mas_offset(200);
+        if (@available (iOS 11, *)) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+//            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideTop).mas_offset(200);
+        }else{
+            make.top.equalTo(self.view);
+//            make.bottom.equalTo(self.view.mas_top).mas_offset(200);
+        }
+//        make.top.equalTo(self.view.mas_top);
+        make.height.mas_offset(200);
        // make.bottom.mas_equalTo(self.baseTableView.mas_top);
     }];
     self.TopView.contentMode = UIViewContentModeScaleToFill;
@@ -124,7 +136,7 @@
     [self.searchlbl setTextColor:[UIColor grayColor]];
     [self.searchlbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.SearchView).mas_offset(19);
-        make.top.equalTo(self.SearchView).mas_offset(9);
+        make.top.equalTo(self.SearchView).mas_offset(8);
     }];
     self.searchlbl.contentMode = UIViewContentModeScaleToFill;
 
@@ -203,17 +215,21 @@
     CGFloat newoffsetY = offsetY + self.marginTop;
     self.Offset = newoffsetY;
     CGFloat scrollOffset = newoffsetY;
+    NSLog(@"scrollOffset:%f",scrollOffset);
     if (scrollOffset >=140) {
         scrollOffset = 140;
     }else if (scrollOffset <= 0){
         scrollOffset = 0;
     }
     if (scrollView == self.baseTableView) {
-        if (scrollOffset >=0 &&scrollOffset <=140) {
+        if (scrollOffset >0 &&scrollOffset <=140) {
             [self.TopView mas_updateConstraints:^(MASConstraintMaker *make) {
-                 make.bottom.equalTo(self.view.mas_top).mas_offset(200-scrollOffset);
+                if (@available (iOS 11, *)) {
+                make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideTop).mas_offset(200 - scrollOffset);
+                }else{
+                 make.bottom.equalTo(self.view.mas_top).mas_offset(200 - scrollOffset);
+                }
             }];
-
         }
 
     }
